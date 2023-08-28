@@ -8,7 +8,7 @@ interface CommentProps {
 const CommentField: FC<CommentProps> = ({ title, limit }) => {
     return (<>
         <h1>{title}!</h1>
-        <input maxLength={limit}></input>
+        <input maxLength={limit}/>
     </>)
 };
 

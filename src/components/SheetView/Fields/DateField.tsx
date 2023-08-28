@@ -1,8 +1,8 @@
 import { FC } from 'react';
+import DatePicker from "react-datepicker";
 
 interface DateProps {
     title: string;
-    limit: number;
 }
 
 const DateField: FC<DateProps> = ({ title }) => {

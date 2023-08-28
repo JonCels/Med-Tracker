@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <CommentField title="Comments" limit={500}/>
+      <BinaryField title="Bowel Movement" name="bowel-movement"/>
     </div>
   );
 }

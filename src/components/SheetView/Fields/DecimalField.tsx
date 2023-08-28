@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 interface DecimalProps {
     title: string;
-    limit: number;
 }
 
 const DecimalField: FC<DecimalProps> = ({ title }) => {

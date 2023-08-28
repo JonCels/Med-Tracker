@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 interface DropdownProps {
     title: string;
-    limit: number;
 }
 
 const DropdownField: FC<DropdownProps> = ({ title }) => {

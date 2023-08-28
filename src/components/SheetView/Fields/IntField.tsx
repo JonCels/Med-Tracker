@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 interface IntProps {
     title: string;
-    limit: number;
 }
 
 const IntField: FC<IntProps> = ({ title }) => {
