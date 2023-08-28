@@ -7,7 +7,7 @@ interface DateProps {
 }
 
 const DateField: FC<DateProps> = ({ title }) => {
-    const [startDate, setDate] = useState(new Date());
+    const [selectedDate, setDate] = useState(new Date());
     
     const selectDateHandler = (date: Date) => {
         setDate(date)
@@ -18,7 +18,7 @@ const DateField: FC<DateProps> = ({ title }) => {
         <h1>{title}</h1>
         <DatePicker
             dateFormat="yyyy/MM/dd"
-            selected={startDate}    
+            selected={selectedDate}    
             onChange={selectDateHandler}
             todayButton={"Today"}/>
     </div>
