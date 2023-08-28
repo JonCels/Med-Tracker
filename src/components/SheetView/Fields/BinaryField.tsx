@@ -10,6 +10,7 @@ const BinaryField: FC<BinaryProps> = ({ title, name }) => {
 
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setBinarySelection(event.target.value);
+        console.log(binarySelection);
     };
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import Header from './components/Header';
-import {CommentField, BinaryField, DateField, DropdownField} from './components/ImportHelper';
+import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField} from './components/ImportHelper';
 
 function App() {
   const dropdownOptions = [
@@ -19,7 +19,8 @@ function App() {
       <BinaryField title="Bowel Movement" name="bowel-movement"/>
       <DateField title="Hello"/>
       <DropdownField title="hello" options={dropdownOptions}/>
-      <h1>{dropdownOptions[0].value}</h1>
+      <IntField title="test"/>
+      <DecimalField title="number"/>
     </div>
   );
 }

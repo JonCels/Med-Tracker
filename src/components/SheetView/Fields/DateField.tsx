@@ -11,6 +11,7 @@ const DateField: FC<DateProps> = ({ title }) => {
     
     const selectDateHandler = (date: Date) => {
         setDate(date)
+        console.log(selectedDate);
     }
 
     return (
