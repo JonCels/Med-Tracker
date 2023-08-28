@@ -1,14 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './components/Header';
+//import Header from './components/Header';
+import {CommentField, BinaryField} from './components/ImportHelper';
 
 function App() {
   return (
     <div className="App">
-      <Header name='Jerry' />
-      <Header name='Sam' />
-      <Header name='Jung' />
+      <CommentField title="Comments" limit={500}/>
     </div>
   );
 }
