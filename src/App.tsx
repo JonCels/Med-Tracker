@@ -16,11 +16,11 @@ function App() {
   return (
     <div className="App">
       <CommentField title="Comments" limit={500}/>
-      <BinaryField title="Bowel Movement" name="bowel-movement"/>
-      <DateField title="Hello"/>
-      <DropdownField title="hello" options={dropdownOptions}/>
-      <IntField title="test"/>
-      <DecimalField title="number"/>
+      <BinaryField title="Binary" name="bowel-movement"/>
+      <DateField title="Date"/>
+      <DropdownField title="Dropdown" options={dropdownOptions}/>
+      <IntField title="Number (Int)"/>
+      <DecimalField title="Number (Decimal)"/>
     </div>
   );
 }

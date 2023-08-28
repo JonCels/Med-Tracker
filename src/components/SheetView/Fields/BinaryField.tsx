@@ -15,7 +15,7 @@ const BinaryField: FC<BinaryProps> = ({ title, name }) => {
 
     return (
     <div>
-        <h1>{title}?</h1>
+        <h1>{title}!</h1>
         <input type="radio" 
             value="Y" 
             name={name} 

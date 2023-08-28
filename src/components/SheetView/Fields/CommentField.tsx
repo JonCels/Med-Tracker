@@ -13,11 +13,12 @@ const CommentField: FC<CommentProps> = ({ title, limit }) => {
         console.log(commentString);
     }
 
-    return (<>
+    return (
+    <div>
         <h1>{title}!</h1>
         <input maxLength={limit} onChange={inputCommentHandler}/>
-        <h1>{commentString}</h1>
-    </>)
+    </div>
+    )
 };
 
 export default CommentField;
