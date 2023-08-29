@@ -1,8 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 //import Header from './components/Header';
-import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField} from './components/ImportHelper';
+import Sheet from './components/SheetView/Sheet';
 
 function App() {
   const dropdownOptions = [
@@ -15,12 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <CommentField title="Comments" limit={500}/>
-      <BinaryField title="Binary" name="bowel-movement"/>
-      <DateField title="Date"/>
-      <DropdownField title="Dropdown" options={dropdownOptions}/>
-      <IntField title="Number (Int)"/>
-      <DecimalField title="Number (Decimal)"/>
+      <Sheet title="hi" name="Jonathan"/>
     </div>
   );
 }
