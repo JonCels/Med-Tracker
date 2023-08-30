@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
 
 interface BinaryProps {
-    title: string;
+    label: string;
     name: string;
 }
 
-const BinaryField: FC<BinaryProps> = ({ title, name }) => {
+const BinaryField: FC<BinaryProps> = ({ label, name }) => {
     const [binarySelection, setBinarySelection] = useState<String>();
 
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,17 +15,17 @@ const BinaryField: FC<BinaryProps> = ({ title, name }) => {
 
     return (
     <div>
-        <span>{title}</span>
+        <span className="binary-label">{label}</span>
         <input type="radio" 
             value="Y" 
             name={name} 
             onChange={radioHandler}/>
-            <label>Y</label>
+            <label className="binary-options">Y</label>
         <input type="radio" 
             value="N" 
             name={name} 
             onChange={radioHandler}/>
-            <label>N</label>
+            <label className="binary-options">N</label>
     </div>
     )
 };

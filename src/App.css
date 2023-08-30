@@ -149,3 +149,11 @@ input[type="number"] {
 .sheet-foot-wrapper textarea {
   width: 95%;
 }
+
+.box-title {
+  font-weight: bold;
+}
+
+.binary-options {
+  font-weight: bold;
+}

@@ -16,6 +16,7 @@ const CommentField: FC<CommentProps> = ({ title, limit }) => {
     return (
     <div>
         <span>{title}</span>
+        <br></br>
         <textarea maxLength={limit} onChange={inputCommentHandler}/>
     </div>
     )
