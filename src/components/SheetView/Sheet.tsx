@@ -18,6 +18,19 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
     return (
     <div className="Sheet">
         <div>
+            <span>
+                Mike Cels
+                <br></br>
+                Medical Tracking
+            </span>
+        </div>
+        <div>
+            <CommentField title="IMPORTANT NOTES" limit={500}/>
+        </div>
+        <div>
+            <DateField title="DATE:"/>
+        </div>
+        <div>
             <BinaryField title="Edaravone?" name="edaravone"/>
             <CommentField title="Comments" limit={500}/>
         </div>
@@ -52,13 +65,20 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
             <BinaryField title='Morning \"Shake\" Via Pump?' name="morning-shake-via-pump"/>
             <CommentField title="Other?" limit={500}/>
         </div>
-
-        <CommentField title="Comments" limit={500}/>
-        <BinaryField title="Binary" name="bowel-movement"/>
-        <DateField title="Date"/>
-        <DropdownField title="Dropdown" options={dropdownOptions}/>
-        <IntField title="Number (Int)"/>
-        <DecimalField title="Number (Decimal)"/>
+        <div>
+            <CommentField title="Dinner/Oral Feeding Notes" limit={500}/>
+        </div>
+        <div>
+            <BinaryField title="Pain/Discomfort?" name="pain-discomfort"/>
+            <DropdownField title="Source" options={dropdownOptions}/>
+            <CommentField title="Notes" limit={500}/>
+        </div>
+        <div>
+            <BinaryField title="Suction Machine?" name="suction-machine"/>
+        </div>
+        <div>
+            <CommentField title="NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP" limit={1000}/>
+        </div>
     </div>
     )
 };
