@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-blackuced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -51,7 +51,6 @@ input[type="number"] {
 
 .sheet-container {
   margin: 20px;
-  border: 5px solid blue;
 }
 
 .sheet-head-wrapper {
@@ -84,62 +83,76 @@ input[type="number"] {
 
 .box-1-edaravone {
   flex: 1;
-  border: 1px solid red;
+  /* text-align: left; */
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-2-edaravone {
   flex: 1;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-3-bipap {
   flex: 1;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-4-bipap {
   flex: 1;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-5-sleep {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-6-bipap {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-7-elimination {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-8-medication {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-9-gtube {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-10-dinner {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .box-11-pain-discomfort {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
+  /* text-align: left; */
 }
 
 .box-12-choking-gagging {
   flex: 2;
-  border: 1px solid red;
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .sheet-foot-wrapper {
@@ -150,10 +163,50 @@ input[type="number"] {
   width: 95%;
 }
 
+.box-7-inner-wrapper {
+  display: flex;
+}
+
+.box-8-inner-wrapper {
+  display: flex;
+}
+
+.box-11-inner-wrapper {
+  display: flex;
+}
+
 .box-title {
   font-weight: bold;
+  text-align: center;
+}
+
+.box-7-inner-left {
+  flex: 1;
+  border-right: 1px solid black;
+}
+
+.box-7-inner-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.box-8-inner-left {
+  flex: 2;
+}
+
+.box-8-inner-middle {
+  flex: 1;
+}
+
+.box-8-inner-right {
+  flex: 2;
 }
 
 .binary-options {
   font-weight: bold;
+}
+
+.binary-label {
+  
 }

@@ -37,7 +37,9 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                 </div>
                 <div className="sheet-head-right-wrapper">
                     <div>
-                        <CommentField title="IMPORTANT NOTES" limit={500}/>
+                        <span>IMPORTANT NOTES</span>
+                        <br></br>
+                        <CommentField limit={500}/>
                     </div>
                 </div>
             </div>
@@ -46,7 +48,10 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                     <div className="box-1-edaravone">
                         <span className="box-title">Edaravone?</span>
                         <BinaryField label="" name="edaravone"/>
-                        <CommentField title="Comments" limit={500}/>
+                        <br></br>
+                        <span>Comments</span>
+                        <br></br>
+                        <CommentField limit={500}/>
                     </div>
                     <div className="box-2-edaravone">
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
@@ -55,55 +60,85 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                     <div className="box-3-bipap">
                         <span className="box-title">PREVIOUS NIGHT BIPAP?</span>
                         <BinaryField label="" name="bipap-night"/>
+                        <br></br>
                         <IntField title="Hours on Bipap Overnight"/>
                     </div>
                     <div className="box-4-bipap">
                         <span className="box-title">DAYTIME USE OF BIPAP?</span>
                         <BinaryField label="" name="bipap-day"/>
+                        <br></br>
                         <IntField title="Hours of Daytime Bipap"/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
                     <div className="box-5-sleep">
                         <span className="box-title">SLEEP</span>
-                        <CommentField title="Repositioned how often?" limit={50}/>
+                        <br></br>
+                        <span>Repositioned how often?</span>
+                        <br></br>
+                        <CommentField limit={50}/>
                     </div>
                     <div className="box-6-bipap">
                         <span className="box-title">BIPAP COMMENTS</span>
-                        <CommentField title="Bipap Comments" limit={500}/>
+                        <CommentField limit={500}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
                     <div className="box-7-elimination">
                         <span className="box-title">ELIMINATION NOTES</span>
-                        <BinaryField label="BM?" name="bowel-movement"/>
-                        <IntField title="Urine Output"/>
-                        <BinaryField label="" name="urine-morning"/>
-                        <DecimalField title="Daily Volume"/>
+                        <div className="box-7-inner-wrapper">
+                            <div className="box-7-inner-left">
+                                <BinaryField label="BM?" name="bowel-movement"/>
+                            </div>
+                            <div className="box-7-inner-right">
+                                <IntField title="Urine Output"/>
+                                <BinaryField label="Morning?" name="urine-morning"/>
+                                <DecimalField title="Daily Volume"/>
+                            </div>
+                        </div>
                     </div>
                     <div className="box-8-medication">
                         <span className="box-title">MEDICATION NOTES</span>
-                        <CommentField title="Change in RX?" limit={500}/>
-                        <CommentField title="Change in Routine?" limit={500}/>
+                        <br></br>
+                        <div className="box-8-inner-wrapper">
+                            <div className="box-8-inner-left">
+                                <span>Change in RX?</span>
+                                <br></br>
+                                <CommentField limit={500}/>
+                            </div>
+                            <div className="box-8-inner-middle">
+                            </div>
+                            <div className="box-8-inner-right">
+                                <span>Change in Routine?</span>
+                                <br></br>
+                                <CommentField limit={500}/> 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="sheet-row-container">
                     <div className="box-9-gtube">
                         <span className="box-title">gTUBE FEEDING NOTES</span>
                         <BinaryField label="" name="morning-shake-via-pump"/>
-                        <CommentField title="Other?" limit={500}/>
+                        <span>Other?</span>
+                        <br></br>
+                        <CommentField limit={500}/>
                     </div>
                     <div className="box-10-dinner">
                         <span className="box-title">DINNER/ORAL FEEDING NOTES</span>
-                        <CommentField title="Dinner/Oral Feeding Notes" limit={500}/>
+                        <CommentField limit={500}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
                     <div className="box-11-pain-discomfort">
                         <span className="box-title">PAIN or DISCOMFORT?</span>
-                        <BinaryField label="" name="pain-discomfort"/>
-                        <DropdownField title="Source" options={dropdownOptions}/>
-                        <CommentField title="Notes" limit={500}/>
+                        <div className="box-11-inner-wrapper">
+                            <BinaryField label="" name="pain-discomfort"/>
+                            <DropdownField title="Source" options={dropdownOptions}/>
+                            <span>Notes</span>
+                            <br></br>
+                            <CommentField limit={500}/>
+                        </div>
                     </div>
                     <div className="box-12-choking-gagging">
                         <span className="box-title">CHOKING/GAGGING</span>
@@ -113,10 +148,11 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
             </div>
             <div className="sheet-foot-wrapper">
                 <div>
-                    <CommentField title="NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP" limit={1000}/>
+                    <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
+                    <br></br>
+                    <CommentField limit={1000}/>
                 </div>
             </div>
-            
         </div>
     </div>
     )

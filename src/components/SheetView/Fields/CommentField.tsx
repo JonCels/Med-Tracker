@@ -1,11 +1,10 @@
 import { FC, useState } from 'react';
 
 interface CommentProps {
-    title: string;
     limit: number;
 }
 
-const CommentField: FC<CommentProps> = ({ title, limit }) => {
+const CommentField: FC<CommentProps> = ({ limit }) => {
     const [commentString, setCommentString] = useState<String>();
 
     const inputCommentHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -15,8 +14,6 @@ const CommentField: FC<CommentProps> = ({ title, limit }) => {
 
     return (
     <div>
-        <span>{title}</span>
-        <br></br>
         <textarea maxLength={limit} onChange={inputCommentHandler}/>
     </div>
     )
