@@ -19,7 +19,7 @@ const DropdownField: FC<DropdownProps> = ({ title, options }) => {
 
     return (
     <div>
-        <h1>{title}!</h1>
+        <span>{title}</span>
         <select onChange={selectOptionHandler}>
             <option value={options[0].value}>
                 {options[0].text}

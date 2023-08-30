@@ -8,15 +8,15 @@ interface CommentProps {
 const CommentField: FC<CommentProps> = ({ title, limit }) => {
     const [commentString, setCommentString] = useState<String>();
 
-    const inputCommentHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputCommentHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setCommentString(event.target.value);
         console.log(commentString);
     }
 
     return (
     <div>
-        <h1>{title}!</h1>
-        <input maxLength={limit} onChange={inputCommentHandler}/>
+        <span>{title}</span>
+        <textarea maxLength={limit} onChange={inputCommentHandler}/>
     </div>
     )
 };

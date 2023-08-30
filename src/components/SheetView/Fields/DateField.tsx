@@ -16,7 +16,7 @@ const DateField: FC<DateProps> = ({ title }) => {
 
     return (
     <div>
-        <h1>{title}!</h1>
+        <span>{title}</span>
         <DatePicker
             dateFormat="yyyy/MM/dd"
             selected={selectedDate}    
