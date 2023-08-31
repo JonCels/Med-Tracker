@@ -19,7 +19,9 @@ const BinaryField: FC<BinaryProps> = ({ name }) => {
             name={name} 
             onChange={radioHandler}/>
             <label className="binary-options">Y</label>
-        <input type="radio" 
+            
+        <input className="binary-radio-right"
+            type="radio" 
             value="N" 
             name={name} 
             onChange={radioHandler}/>

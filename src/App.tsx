@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 //import Header from './components/Header';
 import Sheet from './components/SheetView/Sheet';
+import ViewBar from './components/ViewBar';
 
 function App() {
   const dropdownOptions = [
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <ViewBar/>
       <Sheet/>
     </div>
   );

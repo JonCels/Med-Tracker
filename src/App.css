@@ -50,7 +50,7 @@ input[type="number"] {
 }
 
 .sheet {
-  padding: 40px;
+  padding: 80px;
   background-color: ivory;
 }
 
@@ -63,25 +63,22 @@ input[type="number"] {
 }
 
 .sheet-head-left-wrapper {
-  flex: 1;
+  flex: 2;
   text-align: left;
   padding: 10px;
-}
-
-.sheet-head-middle-wrapper {
-  flex: 1;
-  padding: 10px;
+  padding-left: 0px;
 }
 
 .sheet-head-right-wrapper {
   flex: 2;
   text-align: left;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-weight: bold;
 }
 
 .sheet-head-right-wrapper textarea {
-  width: 95%;
+  width: 99%;
 }
 
 .sheet-box-container {
@@ -171,11 +168,21 @@ input[type="number"] {
 .sheet-foot-wrapper {
   text-align: left;
   font-weight: bold;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;  
+  display: flex;
 }
 
 .sheet-foot-wrapper textarea {
   width: 99%;
+}
+
+.sheet-foot-left {
+  flex: 7;
+}
+
+.sheet-foot-right {
+  flex: 1;
 }
 
 .box-7-inner-wrapper {
@@ -243,8 +250,21 @@ input[type="number"] {
   flex: 1;
 }
 
+.binary-labeled-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .binary-options {
   font-weight: bold;
+}
+
+.binary-label {
+  margin-right: 8px;
+}
+
+.binary-radio-right {
+  margin-left: 8px;
 }
 
 .date-title {
@@ -254,4 +274,20 @@ input[type="number"] {
 .date-text {
   font-weight: bold;
   color: darkred;
+}
+
+.save-button-wrapper {
+  text-align: right;
+}
+
+.save-button {
+  padding: 10px;
+  background-color: palegreen;
+  border-radius: 5px;
+  border: 1px solid darkslategray;
+  font-weight: bold;
+}
+
+.save-button:hover{
+  background-color: lightgreen;
 }

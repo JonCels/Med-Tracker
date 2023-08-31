@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 import {CommentField, BinaryField, BinaryLabeledField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
+import SaveButton from './SaveButton';
 
 interface SheetProps {}
 
 const Sheet: FC<SheetProps> = () => {
-    const test: String = "Hello";
     const dropdownOptions = [
         { text: "", value: "" },
         { text: "Spasms", value: "Spasms" },
@@ -17,6 +17,9 @@ const Sheet: FC<SheetProps> = () => {
     return (
     <div className="sheet">
         <div className="sheet-container">
+            <div className="save-button-wrapper">
+                <SaveButton/>
+            </div>
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
                     <span>
@@ -28,9 +31,9 @@ const Sheet: FC<SheetProps> = () => {
                     <br></br>
                     <DateField title="DATE: "/>
                 </div>
-                <div className="sheet-head-middle-wrapper">
+                {/* <div className="sheet-head-middle-wrapper">
                     <div></div>
-                </div>
+                </div> */}
                 <div className="sheet-head-right-wrapper">
                     <span>IMPORTANT NOTES</span>
                     <br></br>
@@ -88,9 +91,7 @@ const Sheet: FC<SheetProps> = () => {
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output"/>
-                                <br></br>
                                 <BinaryLabeledField label="Morning?" name="urine-morning"/>
-                                <br></br>
                                 <DecimalField title="Daily Volume"/>
                             </div>
                         </div>
@@ -165,13 +166,21 @@ const Sheet: FC<SheetProps> = () => {
                 </div>
             </div>
             <div className="sheet-foot-wrapper">
-                <div>
+                <div className="sheet-foot-left">
                     <br></br>
                     <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                     <br></br>
                     <CommentField limit={1000}/>
                 </div>
+                <div className="sheet-foot-right">
+                    <div className="save-button-wrapper">
+                        <br></br>
+                        <br></br>
+                        <SaveButton/>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </div>
     )
