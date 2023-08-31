@@ -1,15 +1,14 @@
 import { FC, useState } from 'react';
 
 interface DropdownProps {
-    title: string;
     options: {
         text: string;
         value: string;
     }[];
 }
 
-//Not dynamically sized, has exactly 4 dropdown selections + other. If additional dropdown sizes are needed, add javascript to make this dynamic
-const DropdownField: FC<DropdownProps> = ({ title, options }) => {
+//Not dynamically sized, has exactly 4 dropdown selections + other + empty. If additional dropdown sizes are needed, add javascript to make this dynamic
+const DropdownField: FC<DropdownProps> = ({ options }) => {
     const [selectedOption, setOption] = useState<string>();
 
     const selectOptionHandler = (event: React.FormEvent<HTMLSelectElement>) => {
@@ -19,7 +18,6 @@ const DropdownField: FC<DropdownProps> = ({ title, options }) => {
 
     return (
     <div>
-        <span>{title}</span>
         <select onChange={selectOptionHandler}>
             <option value={options[0].value}>
                 {options[0].text}
@@ -35,6 +33,9 @@ const DropdownField: FC<DropdownProps> = ({ title, options }) => {
             </option>
             <option value={options[4].value}>
                 {options[4].text}
+            </option>
+            <option value={options[5].value}>
+                {options[5].text}
             </option>
         </select>
     </div>

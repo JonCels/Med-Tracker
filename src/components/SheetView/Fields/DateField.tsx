@@ -16,8 +16,9 @@ const DateField: FC<DateProps> = ({ title }) => {
 
     return (
     <div>
-        <span>{title}</span>
+        <span className="date-title">{title}</span>
         <DatePicker
+            className="date-text"
             dateFormat="yyyy/MM/dd"
             selected={selectedDate}    
             onChange={selectDateHandler}

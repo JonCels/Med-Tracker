@@ -8,6 +8,7 @@ interface SheetProps {
 
 const Sheet: FC<SheetProps> = ({ title, name }) => {
     const dropdownOptions = [
+        { text: "", value: "" },
         { text: "Spasms", value: "Spasms" },
         { text: "Pressure Ulcer", value: "Pressure-Ulcer" },
         { text: "Nausea", value: "Nausea" },
@@ -29,7 +30,7 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                     </div>
                     <br></br>
                     <div>
-                        <DateField title="DATE:"/>
+                        <DateField title="DATE: "/>
                     </div>
                 </div>
                 <div className="sheet-head-middle-wrapper">
@@ -55,6 +56,8 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                     </div>
                     <div className="box-2-edaravone">
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
+                        <br></br>
+                        <br></br>
                         <BinaryField label="" name="edaravone-change"/>
                     </div>
                     <div className="box-3-bipap">
@@ -92,7 +95,9 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output"/>
+                                <br></br>
                                 <BinaryField label="Morning?" name="urine-morning"/>
+                                <br></br>
                                 <DecimalField title="Daily Volume"/>
                             </div>
                         </div>
@@ -120,6 +125,7 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                     <div className="box-9-gtube">
                         <span className="box-title">gTUBE FEEDING NOTES</span>
                         <BinaryField label="" name="morning-shake-via-pump"/>
+                        <br></br>
                         <span>Other?</span>
                         <br></br>
                         <CommentField limit={500}/>
@@ -134,20 +140,31 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
                         <span className="box-title">PAIN or DISCOMFORT?</span>
                         <div className="box-11-inner-wrapper">
                             <BinaryField label="" name="pain-discomfort"/>
-                            <DropdownField title="Source" options={dropdownOptions}/>
-                            <span>Notes</span>
-                            <br></br>
-                            <CommentField limit={500}/>
+                            <div className="box-11-bottom">
+                                <div className="box-11-bottom-left">
+                                    <span>Source:</span>
+                                    <DropdownField options={dropdownOptions}/>
+                                </div>
+                                <div className="box-11-bottom-right">
+                                    <span>Notes</span>
+                                    <br></br>
+                                    <CommentField limit={500}/>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                     <div className="box-12-choking-gagging">
                         <span className="box-title">CHOKING/GAGGING</span>
+                        <br></br>
+                        <br></br>
                         <BinaryField label="SUCTION MACHINE?" name="suction-machine"/>
                     </div>
                 </div>
             </div>
             <div className="sheet-foot-wrapper">
                 <div>
+                    <br></br>
                     <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                     <br></br>
                     <CommentField limit={1000}/>

@@ -49,6 +49,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.sheet {
+  padding: 40px;
+}
+
 .sheet-container {
   margin: 20px;
 }
@@ -60,15 +64,22 @@ input[type="number"] {
 .sheet-head-left-wrapper {
   flex: 1;
   text-align: left;
+  padding: 10px;
 }
 
 .sheet-head-middle-wrapper {
   flex: 1;
+  padding: 10px;
 }
 
 .sheet-head-right-wrapper {
   flex: 2;
   text-align: left;
+  padding: 10px;
+}
+
+.sheet-head-right-wrapper textarea {
+  width: 95%;
 }
 
 .sheet-box-container {
@@ -157,10 +168,12 @@ input[type="number"] {
 
 .sheet-foot-wrapper {
   text-align: left;
+  font-weight: bold;
+  padding: 10px;
 }
 
 .sheet-foot-wrapper textarea {
-  width: 95%;
+  width: 99%;
 }
 
 .box-7-inner-wrapper {
@@ -173,6 +186,7 @@ input[type="number"] {
 
 .box-11-inner-wrapper {
   display: flex;
+  flex-direction: column;
 }
 
 .box-title {
@@ -203,10 +217,27 @@ input[type="number"] {
   flex: 2;
 }
 
+.box-11-bottom {
+  display: flex;
+}
+
+.box-11-bottom-left {
+  flex: 1;
+}
+
+.box-11-bottom-right {
+  flex: 1;
+}
+
 .binary-options {
   font-weight: bold;
 }
 
-.binary-label {
-  
+.date-title {
+  font-weight: bold;
+}
+
+.date-text {
+  font-weight: bold;
+  color: darkred;
 }
