@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
-import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField} from '../ImportHelper';
+import {CommentField, BinaryField, BinaryLabeledField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
 
 interface SheetProps {}
 
 const Sheet: FC<SheetProps> = () => {
+    const test: String = "Hello";
     const dropdownOptions = [
         { text: "", value: "" },
         { text: "Spasms", value: "Spasms" },
@@ -40,7 +41,7 @@ const Sheet: FC<SheetProps> = () => {
                 <div className="sheet-row-container">
                     <div className="box-1-edaravone">
                         <span className="box-title">Edaravone?</span>
-                        <BinaryField label="" name="edaravone"/>
+                        <BinaryField name="edaravone"/>
                         <br></br>
                         <span>Comments</span>
                         <br></br>
@@ -50,17 +51,17 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
                         <br></br>
                         <br></br>
-                        <BinaryField label="" name="edaravone-change"/>
+                        <BinaryField name="edaravone-change"/>
                     </div>
                     <div className="box-3-bipap">
                         <span className="box-title">PREVIOUS NIGHT BIPAP?</span>
-                        <BinaryField label="" name="bipap-night"/>
+                        <BinaryField name="bipap-night"/>
                         <br></br>
                         <IntField title="Hours on Bipap Overnight"/>
                     </div>
                     <div className="box-4-bipap">
                         <span className="box-title">DAYTIME USE OF BIPAP?</span>
-                        <BinaryField label="" name="bipap-day"/>
+                        <BinaryField name="bipap-day"/>
                         <br></br>
                         <IntField title="Hours of Daytime Bipap"/>
                     </div>
@@ -83,12 +84,12 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">ELIMINATION NOTES</span>
                         <div className="box-7-inner-wrapper">
                             <div className="box-7-inner-left">
-                                <BinaryField label="BM?" name="bowel-movement"/>
+                                <BinaryLabeledField label="BM?" name="bowel-movement"/>
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output"/>
                                 <br></br>
-                                <BinaryField label="Morning?" name="urine-morning"/>
+                                <BinaryLabeledField label="Morning?" name="urine-morning"/>
                                 <br></br>
                                 <DecimalField title="Daily Volume"/>
                             </div>
@@ -116,11 +117,17 @@ const Sheet: FC<SheetProps> = () => {
                 <div className="sheet-row-container">
                     <div className="box-9-gtube">
                         <span className="box-title">gTUBE FEEDING NOTES</span>
-                        <BinaryField label="" name="morning-shake-via-pump"/>
-                        <br></br>
-                        <span>Other?</span>
-                        <br></br>
-                        <CommentField limit={500}/>
+                        <div className="box-9-inner-wrapper">
+                            <div className="box-9-inner-left">
+                                <br></br>
+                                <BinaryLabeledField label="Morning Shake Via Pump?" name="morning-shake-via-pump"/>
+                            </div>
+                            <div className="box-9-inner-right">
+                                <span>Other?</span>
+                                <br></br>
+                                <CommentField limit={500}/>
+                            </div>
+                        </div>
                     </div>
                     <div className="box-10-dinner">
                         <span className="box-title">DINNER/ORAL FEEDING NOTES</span>
@@ -131,11 +138,14 @@ const Sheet: FC<SheetProps> = () => {
                     <div className="box-11-pain-discomfort">
                         <span className="box-title">PAIN or DISCOMFORT?</span>
                         <div className="box-11-inner-wrapper">
-                            <BinaryField label="" name="pain-discomfort"/>
+                            <BinaryField name="pain-discomfort"/>
                             <div className="box-11-bottom">
                                 <div className="box-11-bottom-left">
                                     <span>Source:</span>
                                     <DropdownField options={dropdownOptions}/>
+                                    <br></br>
+                                    <span>Other Source: </span>
+                                    <OptionField limit={50}/>
                                 </div>
                                 <div className="box-11-bottom-right">
                                     <span>Notes</span>
@@ -150,7 +160,7 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">CHOKING/GAGGING</span>
                         <br></br>
                         <br></br>
-                        <BinaryField label="SUCTION MACHINE?" name="suction-machine"/>
+                        <BinaryLabeledField label="SUCTION MACHINE?" name="suction-machine"/>
                     </div>
                 </div>
             </div>
