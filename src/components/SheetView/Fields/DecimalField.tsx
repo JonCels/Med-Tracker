@@ -15,6 +15,7 @@ const DecimalField: FC<DecimalProps> = ({ title }) => {
     return (
     <div>
         <span>{title}</span>
+        <br></br>
         <input type="number" onChange={inputNumberHandler}/>
     </div>
     )

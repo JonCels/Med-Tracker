@@ -1,12 +1,9 @@
 import { FC, useState } from 'react';
 import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField} from '../ImportHelper';
 
-interface SheetProps {
-    title: string;
-    name: string;
-}
+interface SheetProps {}
 
-const Sheet: FC<SheetProps> = ({ title, name }) => {
+const Sheet: FC<SheetProps> = () => {
     const dropdownOptions = [
         { text: "", value: "" },
         { text: "Spasms", value: "Spasms" },
@@ -21,27 +18,22 @@ const Sheet: FC<SheetProps> = ({ title, name }) => {
         <div className="sheet-container">
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
-                    <div>
-                        <span>
-                            Mike Cels
-                            <br></br>
-                            Medical Tracking
-                        </span>
-                    </div>
+                    <span>
+                        Mike Cels
+                        <br></br>
+                        Medical Tracking
+                    </span>
                     <br></br>
-                    <div>
-                        <DateField title="DATE: "/>
-                    </div>
+                    <br></br>
+                    <DateField title="DATE: "/>
                 </div>
                 <div className="sheet-head-middle-wrapper">
                     <div></div>
                 </div>
                 <div className="sheet-head-right-wrapper">
-                    <div>
-                        <span>IMPORTANT NOTES</span>
-                        <br></br>
-                        <CommentField limit={500}/>
-                    </div>
+                    <span>IMPORTANT NOTES</span>
+                    <br></br>
+                    <CommentField limit={500}/>
                 </div>
             </div>
             <div className="sheet-box-container">

@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sheet title="hi" name="Jonathan"/>
+      <Sheet/>
     </div>
   );
 }
