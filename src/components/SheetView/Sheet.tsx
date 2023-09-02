@@ -15,9 +15,9 @@ const Sheet: FC<SheetProps> = () => {
     ];
 
     const initState = {
-        firstName: "Mike",
-        lastName: "Cels",
-        date: new Date(),
+        firstname: "Mike",
+        lastname: "Cels",
+        date: new Date().toDateString(),
         edaravone: "",
         edaravone_comments: "",
         edaravone_change: "",
@@ -43,8 +43,7 @@ const Sheet: FC<SheetProps> = () => {
         pain_discomfort_comments: "",
         suction_machine: "",
         aoc_followup_comments: "",
-        important_notes: "",
-        combined_comments: ""
+        important_notes: ""
     };
 
     const [state, setState] = useState(initState);
@@ -52,7 +51,7 @@ const Sheet: FC<SheetProps> = () => {
     const updateDate = (date: Date): void => {
         setState({
             ...state,
-            date: date
+            date: date.toDateString()
         });
     };
 
@@ -238,15 +237,29 @@ const Sheet: FC<SheetProps> = () => {
         });
     };
 
-    const updateCombinedComments = (comment: string): void => {
-        setState({
-            ...state,
-            combined_comments: comment
-        });
-    };
-
     const saveStateData = () => {
-        console.log(state);
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(state)
+        }
+
+        fetch("http://localhost:8081/api/sheets/", options)
+            .then((data) => {
+                if (!data.ok) {
+                    console.log("Error");
+                }
+                return data.json();
+            })
+            .then((update) => {
+                console.log(update);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        alert("Saved to Database");
     };
 
     return (
@@ -389,7 +402,6 @@ const Sheet: FC<SheetProps> = () => {
                                     <CommentField rows={3} updateState={updatePainDiscomfortComments}/>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     <div className="box-12-choking-gagging">

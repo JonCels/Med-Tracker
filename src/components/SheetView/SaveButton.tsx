@@ -1,23 +1,13 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 
 interface SaveProps {
     saveState: () => void;
 }
 
 const SaveButton: FC<SaveProps> = ({ saveState }) => {
-    const [button, setButton] = useState<string>("");
-
-    const buttonHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setButton("true");
-    };
-
-    useEffect(() => {
-        saveState();
-    }, [button]);
-
     return (
     <div>
-        <button className="save-button" onClick={saveState}>Save Sheet</button>
+        <button className="save-button" onClick={() => { saveState() }}>Save Sheet</button>
     </div>
     )
 };
