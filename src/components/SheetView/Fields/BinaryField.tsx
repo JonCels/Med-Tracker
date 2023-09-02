@@ -1,16 +1,22 @@
-import { FC, useState } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 interface BinaryProps {
     name: string;
+    updateState: (arg: string) => void;
 }
 
-const BinaryField: FC<BinaryProps> = ({ name }) => {
-    const [binarySelection, setBinarySelection] = useState<String>();
+const BinaryField: FC<BinaryProps> = ({ name, updateState }) => {
+    const [binarySelection, setBinarySelection] = useState<string>("");
 
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setBinarySelection(event.target.value);
-        console.log(binarySelection);
     };
+
+    useEffect(() => {
+        if (updateState) {
+            updateState(binarySelection);
+        }
+    }, [binarySelection]);
 
     return (
     <div>
@@ -19,7 +25,7 @@ const BinaryField: FC<BinaryProps> = ({ name }) => {
             name={name} 
             onChange={radioHandler}/>
             <label className="binary-options">Y</label>
-            
+
         <input className="binary-radio-right"
             type="radio" 
             value="N" 
