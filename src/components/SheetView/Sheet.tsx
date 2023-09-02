@@ -245,11 +245,15 @@ const Sheet: FC<SheetProps> = () => {
         });
     };
 
+    const saveStateData = () => {
+        console.log(state);
+    };
+
     return (
     <div className="sheet">
         <div className="sheet-container">
             <div className="save-button-wrapper">
-                <SaveButton/>
+                <SaveButton saveState={saveStateData}/>
             </div>
             <span>{state.edaravone}</span>
             <div className="sheet-head-wrapper">
@@ -411,7 +415,7 @@ const Sheet: FC<SheetProps> = () => {
                     <div className="save-button-wrapper">
                         <br></br>
                         <br></br>
-                        <SaveButton/>
+                        <SaveButton saveState={saveStateData}/>
                     </div>
                 </div>
             </div>
