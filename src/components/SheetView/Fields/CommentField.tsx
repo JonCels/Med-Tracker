@@ -1,11 +1,12 @@
 import { FC, useState, useEffect } from 'react';
 
 interface CommentProps {
-    limit: number;
+    limit?: number;
+    rows?: number;
     updateState: (arg: string) => void;
 }
 
-const CommentField: FC<CommentProps> = ({ limit, updateState }) => {
+const CommentField: FC<CommentProps> = ({ limit = 500, rows = 2, updateState }) => {
     const [commentString, setCommentString] = useState<string>("");
 
     const inputCommentHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -20,7 +21,7 @@ const CommentField: FC<CommentProps> = ({ limit, updateState }) => {
 
     return (
     <div>
-        <textarea maxLength={limit} onChange={inputCommentHandler}/>
+        <textarea maxLength={limit} rows={rows} onChange={inputCommentHandler}/>
     </div>
     )
 };

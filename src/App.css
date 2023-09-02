@@ -51,7 +51,7 @@ input[type="number"] {
 
 .sheet {
   padding: 80px;
-  background-color: ivory;
+  background-color: floralwhite;
 }
 
 .sheet-container {
@@ -94,74 +94,74 @@ input[type="number"] {
 .box-1-edaravone {
   flex: 1;
   /* text-align: left; */
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-2-edaravone {
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-3-bipap {
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-4-bipap {
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-5-sleep {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-6-bipap {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-7-elimination {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-8-medication {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-9-gtube {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-10-dinner {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
 .box-11-pain-discomfort {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
   /* text-align: left; */
 }
 
 .box-12-choking-gagging {
   flex: 2;
-  border: 1px solid black;
+  border: 1px solid #ACACAC;
   padding: 10px;
 }
 
@@ -282,12 +282,17 @@ input[type="number"] {
 
 .save-button {
   padding: 10px;
-  background-color: palegreen;
   border-radius: 5px;
-  border: 1px solid darkslategray;
+  border: 1px solid #ACACAC;
   font-weight: bold;
+  box-shadow: 0 2px 5px 0 rgba(215,215,215,0.5);
+  background-color: white;
 }
 
-.save-button:hover{
-  background-color: lightgreen;
+.save-button:hover {
+  background-color: whitesmoke;
+}
+
+.save-button:active {
+  box-shadow: 0 2px 5px 0 rgba(120, 150, 120, 0.5);
 }

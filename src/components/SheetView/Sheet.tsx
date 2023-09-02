@@ -255,7 +255,6 @@ const Sheet: FC<SheetProps> = () => {
             <div className="save-button-wrapper">
                 <SaveButton saveState={saveStateData}/>
             </div>
-            <span>{state.edaravone}</span>
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
                     <span>
@@ -267,13 +266,10 @@ const Sheet: FC<SheetProps> = () => {
                     <br></br>
                     <DateField title="DATE: " updateState={updateDate}/>
                 </div>
-                {/* <div className="sheet-head-middle-wrapper">
-                    <div></div>
-                </div> */}
                 <div className="sheet-head-right-wrapper">
                     <span>IMPORTANT NOTES</span>
                     <br></br>
-                    <CommentField limit={500} updateState={updateImportantNotes}/>
+                    <CommentField rows={4} updateState={updateImportantNotes}/>
                 </div>
             </div>
             <div className="sheet-box-container">
@@ -284,7 +280,7 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>Comments</span>
                         <br></br>
-                        <CommentField limit={500} updateState={updateEdaravoneComments}/>
+                        <CommentField updateState={updateEdaravoneComments}/>
                     </div>
                     <div className="box-2-edaravone">
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
@@ -315,7 +311,7 @@ const Sheet: FC<SheetProps> = () => {
                     </div>
                     <div className="box-6-bipap">
                         <span className="box-title">BIPAP COMMENTS</span>
-                        <CommentField limit={500} updateState={updateBipapComments}/>
+                        <CommentField updateState={updateBipapComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
@@ -326,7 +322,7 @@ const Sheet: FC<SheetProps> = () => {
                                 <BinaryLabeledField label="BM?" name="bowel-movement" updateState={updateBW}/>
                                 <span>Comments</span>
                                 <br></br>
-                                <CommentField limit={500} updateState={updateBWComments}/>
+                                <CommentField updateState={updateBWComments}/>
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output" updateState={updateUrineOutput}/>
@@ -342,14 +338,14 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-8-inner-left">
                                 <span>Change in RX?</span>
                                 <br></br>
-                                <CommentField limit={500} updateState={updateMedicationRXChange}/>
+                                <CommentField rows={3} updateState={updateMedicationRXChange}/>
                             </div>
                             <div className="box-8-inner-middle">
                             </div>
                             <div className="box-8-inner-right">
                                 <span>Change in Routine?</span>
                                 <br></br>
-                                <CommentField limit={500} updateState={updateMedicationRoutineChange}/> 
+                                <CommentField rows={3} updateState={updateMedicationRoutineChange}/> 
                             </div>
                         </div>
                     </div>
@@ -365,13 +361,13 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-9-inner-right">
                                 <span>Other?</span>
                                 <br></br>
-                                <CommentField limit={500} updateState={updateGtubeComments}/>
+                                <CommentField updateState={updateGtubeComments}/>
                             </div>
                         </div>
                     </div>
                     <div className="box-10-dinner">
                         <span className="box-title">DINNER/ORAL FEEDING NOTES</span>
-                        <CommentField limit={500} updateState={updateDinnerOralFeedComments}/>
+                        <CommentField updateState={updateDinnerOralFeedComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
@@ -390,7 +386,7 @@ const Sheet: FC<SheetProps> = () => {
                                 <div className="box-11-bottom-right">
                                     <span>Notes</span>
                                     <br></br>
-                                    <CommentField limit={500} updateState={updatePainDiscomfortComments}/>
+                                    <CommentField rows={3} updateState={updatePainDiscomfortComments}/>
                                 </div>
                             </div>
                             
@@ -409,7 +405,7 @@ const Sheet: FC<SheetProps> = () => {
                     <br></br>
                     <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                     <br></br>
-                    <CommentField limit={1000} updateState={updateAOCFollowup}/>
+                    <CommentField limit={1000} rows={6} updateState={updateAOCFollowup}/>
                 </div>
                 <div className="sheet-foot-right">
                     <div className="save-button-wrapper">

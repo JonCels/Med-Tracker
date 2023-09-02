@@ -17,7 +17,7 @@ const SaveButton: FC<SaveProps> = ({ saveState }) => {
 
     return (
     <div>
-        <button className="save-button" onClick={buttonHandler}>Save Sheet</button>
+        <button className="save-button" onClick={saveState}>Save Sheet</button>
     </div>
     )
 };
