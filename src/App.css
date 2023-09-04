@@ -82,6 +82,7 @@ input[type="number"] {
   min-width: 200px;
 }
 
+
 .sheet-head-right-wrapper textarea {
   width: 99%;
 }
@@ -97,78 +98,94 @@ input[type="number"] {
   flex-wrap: wrap;
 }
 
+.sheet-row-container-reverse {
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
 .box-1-edaravone {
   flex: 1;
   /* text-align: left; */
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: ivory; */
 }
 
 .box-2-edaravone {
   flex: 1;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: ivory; */
 }
 
 .box-3-bipap {
   flex: 1;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: mintcream; */
 }
 
 .box-4-bipap {
   flex: 1;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: mintcream; */
 }
 
 .box-5-sleep {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: ghostwhite; */
 }
 
 .box-6-bipap {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: mintcream; */
 }
 
 .box-7-elimination {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: azure; */
 }
 
 .box-8-medication {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: lavenderblush; */
 }
 
 .box-9-gtube {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: seashell; */
 }
 
 .box-10-dinner {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: aliceblue; */
 }
 
 .box-11-pain-discomfort {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
-  /* text-align: left; */
+  /* background-color: ivory; */
 }
 
 .box-12-choking-gagging {
   flex: 2;
   border: 1px solid #ACACAC;
   padding: 10px;
+  /* background-color: mintcream; */
 }
 
 .sheet-foot-wrapper {

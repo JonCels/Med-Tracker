@@ -362,11 +362,11 @@ const Sheet: FC<SheetProps> = () => {
                         <IntField title="Hours of Daytime Bipap" updateState={updateBipapDaytimeHours}/>
                     </div>
                 </div>
-                <div className="sheet-row-container">
+                <div className="sheet-row-container-reverse">
                     <div className="box-5-sleep">
                         <span className="box-title">SLEEP</span>
                         <br></br>
-                        <span>Repositioned how often?</span>
+                        <span>Notes?</span>
                         <br></br>
                         <CommentField limit={50} updateState={updateSleep}/>
                     </div>
