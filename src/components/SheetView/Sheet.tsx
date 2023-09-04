@@ -237,7 +237,31 @@ const Sheet: FC<SheetProps> = () => {
         });
     };
 
-    const saveStateData = () => {
+    const saveButtonEvent = () => {
+        const currDate: string = state.date;
+        let getDateUrl: string = encodeURI(`http://localhost:8081/api/sheets/date?date=${currDate}`);
+
+        fetch(getDateUrl)
+            .then((data) => {
+                if (!data.ok) {
+                    console.log("Error");
+                }
+                return data.json();
+            })
+            .then((update) => {
+                if (update.length == 0) {
+                    saveSheet();
+                }
+                else if (update.length > 0) {
+                    updateSheet(update[0].id);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    function saveSheet(): void {
         const options = {
             method: 'POST',
             headers: {
@@ -259,14 +283,40 @@ const Sheet: FC<SheetProps> = () => {
             .catch(err => {
                 console.log(err);
             });
-        alert("Saved to Database");
-    };
+        alert(`Saved sheet for ${state.date}`);
+    };  
+
+    function updateSheet(existingSheetId: number): void {
+        const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(state)
+        }
+        let idStr: string = existingSheetId.toString();
+
+        fetch(`http://localhost:8081/api/sheets/${idStr}`, options)
+            .then((data) => {
+                if (!data.ok) {
+                    console.log("Error");
+                }
+                return data.json();
+            })
+            .then((update) => {
+                console.log(update);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        alert(`Updated existing sheet for ${state.date}`);
+    }
 
     return (
     <div className="sheet">
         <div className="sheet-container">
             <div className="save-button-wrapper">
-                <SaveButton saveState={saveStateData}/>
+                <SaveButton saveState={saveButtonEvent}/>
             </div>
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
@@ -423,7 +473,7 @@ const Sheet: FC<SheetProps> = () => {
                     <div className="save-button-wrapper">
                         <br></br>
                         <br></br>
-                        <SaveButton saveState={saveStateData}/>
+                        <SaveButton saveState={saveButtonEvent}/>
                     </div>
                 </div>
             </div>
