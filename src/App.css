@@ -50,7 +50,10 @@ input[type="number"] {
 }
 
 .sheet {
-  padding: 80px;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
   background-color: floralwhite;
 }
 
@@ -60,6 +63,7 @@ input[type="number"] {
 
 .sheet-head-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .sheet-head-left-wrapper {
@@ -75,6 +79,7 @@ input[type="number"] {
   padding-top: 10px;
   padding-bottom: 10px;
   font-weight: bold;
+  min-width: 200px;
 }
 
 .sheet-head-right-wrapper textarea {
@@ -89,6 +94,7 @@ input[type="number"] {
 
 .sheet-row-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .box-1-edaravone {
@@ -170,36 +176,32 @@ input[type="number"] {
   font-weight: bold;
   padding-top: 10px;
   padding-bottom: 10px;  
-  display: flex;
 }
 
 .sheet-foot-wrapper textarea {
   width: 99%;
 }
 
-.sheet-foot-left {
-  flex: 7;
-}
-
-.sheet-foot-right {
-  flex: 1;
-}
 
 .box-7-inner-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .box-8-inner-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .box-9-inner-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .box-11-inner-wrapper {
   display: flex;
   flex-direction: column;
+
 }
 
 .box-title {
@@ -209,7 +211,9 @@ input[type="number"] {
 
 .box-7-inner-left {
   flex: 1;
-  border-right: 1px solid black;
+  padding-right: 8px;
+  margin-right: 8px;
+  border-right: 2px solid grey;
 }
 
 .box-7-inner-right {
@@ -222,16 +226,13 @@ input[type="number"] {
   flex: 2;
 }
 
-.box-8-inner-middle {
-  flex: 1;
-}
-
 .box-8-inner-right {
   flex: 2;
 }
 
 .box-9-inner-left {
   flex: 1;
+  min-width: 196px;
 }
 
 .box-9-inner-right {
@@ -240,6 +241,7 @@ input[type="number"] {
 
 .box-11-bottom {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .box-11-bottom-left {
@@ -287,6 +289,8 @@ input[type="number"] {
   font-weight: bold;
   box-shadow: 0 2px 5px 0 rgba(215,215,215,0.5);
   background-color: white;
+  min-width: 94px;
+  margin-left: 4px;
 }
 
 .save-button:hover {
@@ -294,5 +298,5 @@ input[type="number"] {
 }
 
 .save-button:active {
-  box-shadow: 0 2px 5px 0 rgba(120, 150, 120, 0.5);
+  box-shadow: 0 2px 5px 0 rgba(82, 82, 82, 0.5);
 }

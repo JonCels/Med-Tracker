@@ -320,19 +320,17 @@ const Sheet: FC<SheetProps> = () => {
             </div>
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
-                    <span>
+                    <h3>
                         Mike Cels
                         <br></br>
                         Medical Tracking
-                    </span>
-                    <br></br>
-                    <br></br>
+                    </h3>
                     <DateField title="DATE: " updateState={updateDate}/>
                 </div>
                 <div className="sheet-head-right-wrapper">
                     <span>IMPORTANT NOTES</span>
                     <br></br>
-                    <CommentField rows={4} updateState={updateImportantNotes}/>
+                    <CommentField rows={5} updateState={updateImportantNotes}/>
                 </div>
             </div>
             <div className="sheet-box-container">
@@ -419,7 +417,9 @@ const Sheet: FC<SheetProps> = () => {
                         <div className="box-9-inner-wrapper">
                             <div className="box-9-inner-left">
                                 <br></br>
-                                <BinaryLabeledField label="Morning Shake Via Pump?" name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
+                                <span>Morning Shake Via Pump?</span>
+                                <br></br>
+                                <BinaryField name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
                             </div>
                             <div className="box-9-inner-right">
                                 <span>Other?</span>
@@ -458,23 +458,19 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">CHOKING/GAGGING</span>
                         <br></br>
                         <br></br>
-                        <BinaryLabeledField label="SUCTION MACHINE?" name="suction-machine" updateState={updateSuctionMachine}/>
+                        <span>SUCTION MACHINE?</span>
+                        <br></br>
+                        <BinaryField name="suction-machine" updateState={updateSuctionMachine}/>
                     </div>
                 </div>
             </div>
             <div className="sheet-foot-wrapper">
-                <div className="sheet-foot-left">
-                    <br></br>
-                    <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
-                    <br></br>
-                    <CommentField limit={1000} rows={6} updateState={updateAOCFollowup}/>
-                </div>
-                <div className="sheet-foot-right">
-                    <div className="save-button-wrapper">
-                        <br></br>
-                        <br></br>
-                        <SaveButton saveState={saveButtonEvent}/>
-                    </div>
+                <br></br>
+                <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
+                <br></br>
+                <CommentField limit={1000} rows={6} updateState={updateAOCFollowup}/>
+                <div className="save-button-wrapper">
+                    <SaveButton saveState={saveButtonEvent}/>
                 </div>
             </div>
         </div>
