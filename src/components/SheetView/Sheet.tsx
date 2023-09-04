@@ -18,6 +18,7 @@ const Sheet: FC<SheetProps> = () => {
         firstname: "Mike",
         lastname: "Cels",
         date: new Date().toDateString(),
+        sortable_date: new Date().toISOString().slice(0, 10),
         edaravone: "",
         edaravone_comments: "",
         edaravone_change: "",
@@ -43,7 +44,7 @@ const Sheet: FC<SheetProps> = () => {
         pain_discomfort_comments: "",
         suction_machine: "",
         aoc_followup_comments: "",
-        important_notes: ""
+        important_notes: "",
     };
 
     const [state, setState] = useState(initState);
@@ -51,7 +52,8 @@ const Sheet: FC<SheetProps> = () => {
     const updateDate = (date: Date): void => {
         setState({
             ...state,
-            date: date.toDateString()
+            date: date.toDateString(),
+            sortable_date: date.toISOString().slice(0, 10),
         });
     };
 
@@ -278,7 +280,7 @@ const Sheet: FC<SheetProps> = () => {
                 return data.json();
             })
             .then((update) => {
-                console.log(update);
+                //console.log(update);
             })
             .catch(err => {
                 console.log(err);
@@ -304,7 +306,7 @@ const Sheet: FC<SheetProps> = () => {
                 return data.json();
             })
             .then((update) => {
-                console.log(update);
+                //console.log(update);
             })
             .catch(err => {
                 console.log(err);
