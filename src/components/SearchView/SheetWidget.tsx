@@ -69,15 +69,15 @@ const SheetWidget: FC<SheetWidgetProps> = ({ sheetData }) => {
         important_notes: "",
     };
 
-    const test1 = sheetData == null ? initState.date : sheetData.date;
-    const test2 = sheetData == null ? initState.important_notes : sheetData.important_notes;
-    const test3 = sheetData == null ? initState.aoc_followup_comments : sheetData.aoc_followup_comments;
+    const date = sheetData == null ? initState.date : sheetData.date;
+    const important_notes = sheetData == null ? initState.important_notes : sheetData.important_notes;
+    const aoc_followup_comments = sheetData == null ? initState.aoc_followup_comments : sheetData.aoc_followup_comments;
 
     return (
     <div className="sheet-widget">
-        <span>{test1}</span>
-        <span>{test2}</span>
-        <span>{test3}</span>
+        <span>{date}</span>
+        <span>{important_notes}</span>
+        <span>{aoc_followup_comments}</span>
     </div>
     )
 };
