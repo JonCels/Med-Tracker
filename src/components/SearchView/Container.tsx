@@ -44,11 +44,6 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
         loadExistingSheets();
     }, []);
 
-    useEffect(() => {
-        console.log(widgetList);
-        testDynamic();
-    }, [widgetList]);
-
     const loadExistingSheets = () => {
         let allWidgetsUrl: string = encodeURI("http://localhost:8081/api/sheets/");
         fetch(allWidgetsUrl)
@@ -66,30 +61,24 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
             });
     };
 
-    function testDynamic(): void {
-        for (let i = 0; i < widgetList.length; i++) {
-            console.log(widgetList[i]);
-        }
-    }
-
     return (
     <div className="search-container">
-        <div className="widget-headings">
-            <span>Date</span>
-            <span>Important Notes</span>
-            <span>Areas of Concern or Followup</span>
-        </div>
-        <div className="search-results">
-            {widgetList.map((widget) => {
-                return (
-                    <div key={widget.id}>
-                        <SheetWidget sheetData={widget}/>
-                    </div>
-                );
-            })}
-        </div>
+        <table>
+            <tbody>
+                <tr className="widget-headings">
+                    <th>Date</th>
+                    <th>Important Notes</th>
+                    <th>Areas of Concern or Followup</th>
+                </tr>
+                {widgetList.map((widget) => {
+                    return (
+                        <SheetWidget key={widget.id} sheetData={widget}/>
+                    );
+                })}
+            </tbody>
+        </table>
     </div>
-    )
+    );
 };
 
 export default SearchContainer;

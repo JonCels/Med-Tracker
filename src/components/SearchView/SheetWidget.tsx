@@ -74,11 +74,11 @@ const SheetWidget: FC<SheetWidgetProps> = ({ sheetData }) => {
     const aoc_followup_comments = sheetData == null ? initState.aoc_followup_comments : sheetData.aoc_followup_comments;
 
     return (
-    <div className="sheet-widget">
-        <span>{date}</span>
-        <span>{important_notes}</span>
-        <span>{aoc_followup_comments}</span>
-    </div>
+        <tr className="sheet-widget">
+            <td>{date}</td>
+            <td>{important_notes}</td>
+            <td>{aoc_followup_comments}</td>
+        </tr>
     )
 };
 
