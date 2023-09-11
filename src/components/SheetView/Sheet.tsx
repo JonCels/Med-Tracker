@@ -5,6 +5,8 @@ import SaveButton from './SaveButton';
 interface SheetProps {}
 
 const Sheet: FC<SheetProps> = () => {
+    const backendURI: string = 'https://daily-med-tracker.onrender.com/api/sheets';
+
     const dropdownOptions = [
         { text: "", value: "" },
         { text: "Spasms", value: "Spasms" },
@@ -241,9 +243,10 @@ const Sheet: FC<SheetProps> = () => {
 
     const saveButtonEvent = () => {
         const currDate: string = state.date;
-        let getDateUrl: string = encodeURI(`http://localhost:8081/api/sheets/date?date=${currDate}`);
+        const dateURI: string = backendURI + `date?date=${currDate}`;
+        let getDateURI: string = encodeURI(dateURI);
 
-        fetch(getDateUrl)
+        fetch(getDateURI)
             .then((data) => {
                 if (!data.ok) {
                     console.log("Error");
@@ -272,7 +275,7 @@ const Sheet: FC<SheetProps> = () => {
             body: JSON.stringify(state)
         }
 
-        fetch("http://localhost:8081/api/sheets/", options)
+        fetch(backendURI, options)
             .then((data) => {
                 if (!data.ok) {
                     console.log("Error");
@@ -298,7 +301,8 @@ const Sheet: FC<SheetProps> = () => {
         }
         let idStr: string = existingSheetId.toString();
 
-        fetch(`http://localhost:8081/api/sheets/${idStr}`, options)
+        const fetchURI: string = backendURI + `${idStr}`;
+        fetch(fetchURI, options)
             .then((data) => {
                 if (!data.ok) {
                     console.log("Error");

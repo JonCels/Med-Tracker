@@ -8,9 +8,9 @@ import Container from './components/SearchView/Container';
 function App() {
   return (
     <div className="App">
-      <ViewBar/>
+      {/* <ViewBar/> */}
       <Sheet/>
-      <Container/>
+      {/* <Container/> */}
     </div>
   );
 }
