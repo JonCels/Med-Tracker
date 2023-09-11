@@ -5,7 +5,7 @@ import SaveButton from './SaveButton';
 interface SheetProps {}
 
 const Sheet: FC<SheetProps> = () => {
-    const backendURI: string = 'https://daily-med-tracker.onrender.com/api/sheets';
+    const backendURI: string = 'https://daily-med-tracker.onrender.com/api/sheets/';
 
     const dropdownOptions = [
         { text: "", value: "" },
