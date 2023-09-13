@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import {CommentField, BinaryLabeledField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
+import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
 import SaveButton from './SaveButton';
 
 interface SheetProps {}
@@ -345,7 +345,7 @@ const Sheet: FC<SheetProps> = () => {
                 <div className="sheet-row-container">
                     <div className="box-1-edaravone">
                         <span className="box-title">Edaravone?</span>
-                        <BinaryLabeledField binarySelection={state.edaravone} name="edaravone" updateState={updateEdaravone}/>
+                        <BinaryField binarySelection={state.edaravone} name="edaravone" updateState={updateEdaravone}/>
                         <br></br>
                         <span>Comments</span>
                         <br></br>
@@ -355,17 +355,17 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
                         <br></br>
                         <br></br>
-                        <BinaryLabeledField binarySelection={state.edaravone_change} name="edaravone-change" updateState={updateEdaravoneChange}/>
+                        <BinaryField binarySelection={state.edaravone_change} name="edaravone-change" updateState={updateEdaravoneChange}/>
                     </div>
                     <div className="box-3-bipap">
                         <span className="box-title">PREVIOUS NIGHT BIPAP?</span>
-                        <BinaryLabeledField binarySelection={state.bipap_nighttime} name="bipap-night" updateState={updateBipapNighttime}/>
+                        <BinaryField binarySelection={state.bipap_nighttime} name="bipap-night" updateState={updateBipapNighttime}/>
                         <br></br>
                         <IntField title="Hours on Bipap Overnight" updateState={updateBipapNighttimeHours}/>
                     </div>
                     <div className="box-4-bipap">
                         <span className="box-title">DAYTIME USE OF BIPAP?</span>
-                        <BinaryLabeledField binarySelection={state.bipap_daytime} name="bipap-day" updateState={updateBipapDaytime}/>
+                        <BinaryField binarySelection={state.bipap_daytime} name="bipap-day" updateState={updateBipapDaytime}/>
                         <br></br>
                         <IntField title="Hours of Daytime Bipap" updateState={updateBipapDaytimeHours}/>
                     </div>
@@ -388,14 +388,14 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">ELIMINATION NOTES</span>
                         <div className="box-7-inner-wrapper">
                             <div className="box-7-inner-left">
-                                <BinaryLabeledField binarySelection={state.bowel_movement} label="BM?" name="bowel-movement" updateState={updateBW}/>
+                                <BinaryField binarySelection={state.bowel_movement} label="BM?" name="bowel-movement" updateState={updateBW}/>
                                 <span>Comments</span>
                                 <br></br>
                                 <CommentField commentFieldString={""} updateState={updateBWComments}/>
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output" updateState={updateUrineOutput}/>
-                                <BinaryLabeledField binarySelection={state.urine_morning} label="Morning?" name="urine-morning" updateState={updateUrineMorning}/>
+                                <BinaryField binarySelection={state.urine_morning} label="Morning?" name="urine-morning" updateState={updateUrineMorning}/>
                                 <DecimalField title="Daily Volume" updateState={updateUrineDailyVolume}/>
                             </div>
                         </div>
@@ -427,7 +427,7 @@ const Sheet: FC<SheetProps> = () => {
                                 <br></br>
                                 <span>Morning Shake Via Pump?</span>
                                 <br></br>
-                                <BinaryLabeledField binarySelection={state.morning_shake_via_pump} name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
+                                <BinaryField binarySelection={state.morning_shake_via_pump} name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
                             </div>
                             <div className="box-9-inner-right">
                                 <span>Other?</span>
@@ -445,7 +445,7 @@ const Sheet: FC<SheetProps> = () => {
                     <div className="box-11-pain-discomfort">
                         <span className="box-title">PAIN or DISCOMFORT?</span>
                         <div className="box-11-inner-wrapper">
-                            <BinaryLabeledField binarySelection={state.pain_discomfort} name="pain-discomfort" updateState={updatePainDiscomfort}/>
+                            <BinaryField binarySelection={state.pain_discomfort} name="pain-discomfort" updateState={updatePainDiscomfort}/>
                             <div className="box-11-bottom">
                                 <div className="box-11-bottom-left">
                                     <span>Source:</span>
@@ -468,7 +468,7 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>SUCTION MACHINE?</span>
                         <br></br>
-                        <BinaryLabeledField binarySelection={state.suction_machine} name="suction-machine" updateState={updateSuctionMachine}/>
+                        <BinaryField binarySelection={state.suction_machine} name="suction-machine" updateState={updateSuctionMachine}/>
                     </div>
                 </div>
             </div>

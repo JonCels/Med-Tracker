@@ -1,13 +1,13 @@
 import { FC, useState, useEffect } from 'react';
 
-interface BinaryLabeledProps {
+interface BinaryProps {
     label?: string;
     name: string;
     updateState: (arg: string) => void;
     binarySelection: string;
 }
 
-const BinaryLabeledField: FC<BinaryLabeledProps> = ({ label, name, updateState, binarySelection }) => {
+const BinaryField: FC<BinaryProps> = ({ label, name, updateState, binarySelection }) => {
     const displayLabel = label === undefined ? "none" : "inline-block";
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log(label);
@@ -33,4 +33,4 @@ const BinaryLabeledField: FC<BinaryLabeledProps> = ({ label, name, updateState, 
     )
 };
 
-export default BinaryLabeledField;
+export default BinaryField;
