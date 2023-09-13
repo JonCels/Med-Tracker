@@ -3,27 +3,28 @@ import { FC, useState, useEffect } from 'react';
 interface DecimalProps {
     title: string;
     updateState: (arg: number) => void;
+    inputNumber: number;
 }
 
-const DecimalField: FC<DecimalProps> = ({ title, updateState }) => {
-    const [inputNumber, setInputNumber] = useState<number>(0);
+const DecimalField: FC<DecimalProps> = ({ title, updateState, inputNumber }) => {
+    //const [inputNumber, setInputNumber] = useState<number>(0);
 
     const inputNumberHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         let tempNum: number = Number(event.target.value);
-        setInputNumber(tempNum);
+        updateState(tempNum);
     };
 
-    useEffect(() => {
-        if (updateState) {
-            updateState(inputNumber);
-        }
-    }, [inputNumber]);
+    // useEffect(() => {
+    //     if (updateState) {
+    //         updateState(inputNumber);
+    //     }
+    // }, [inputNumber]);
 
     return (
     <div>
         <span>{title}</span>
         <br></br>
-        <input type="number" onChange={inputNumberHandler}/>
+        <input value={inputNumber === 0 ? "" : inputNumber.toString()} type="number" onChange={inputNumberHandler}/>
     </div>
     )
 };

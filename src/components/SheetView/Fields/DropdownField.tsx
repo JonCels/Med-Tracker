@@ -6,25 +6,27 @@ interface DropdownProps {
         value: string;
     }[];
     updateState: (arg: string) => void;
+    selectedOption: string;
+    
 }
 
 //Not dynamically sized, has exactly 4 dropdown selections + other + empty. If additional dropdown sizes are needed, add javascript to make this dynamic
-const DropdownField: FC<DropdownProps> = ({ options, updateState }) => {
-    const [selectedOption, setOption] = useState<string>("");
+const DropdownField: FC<DropdownProps> = ({ options, updateState, selectedOption }) => {
+    //const [selectedOption, setOption] = useState<string>("");
 
     const selectOptionHandler = (event: React.FormEvent<HTMLSelectElement>) => {
-        setOption(event.currentTarget.value);
+        updateState(event.currentTarget.value);
     };
 
-    useEffect(() => {
-        if (updateState) {
-            updateState(selectedOption);
-        }
-    }, [selectedOption]);
+    // useEffect(() => {
+    //     if (updateState) {
+    //         updateState(selectedOption);
+    //     }
+    // }, [selectedOption]);
 
     return (
     <div>
-        <select onChange={selectOptionHandler}>
+        <select onChange={selectOptionHandler} value={selectedOption}>
             <option value={options[0].value}>
                 {options[0].text}
             </option>

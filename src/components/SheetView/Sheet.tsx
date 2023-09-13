@@ -47,6 +47,7 @@ const Sheet: FC<SheetProps> = () => {
         suction_machine: "",
         aoc_followup_comments: "",
         important_notes: "",
+        combined_comments: "",
     };
 
     const [state, setState] = useState(initState);
@@ -241,6 +242,20 @@ const Sheet: FC<SheetProps> = () => {
         });
     };
 
+    const updateCombinedComments = (): void => {
+        const combinedComment = state.edaravone_comments + ' ' + state.bipap_comments + ' ' 
+        + state.sleep + ' ' + state.bowel_movement_comments + ' ' + state.urine_comments + ' ' 
+        + state.medication_rx_change + ' ' + state.medication_routine_change + ' ' 
+        + state.gtube_other_comments + ' ' + state.dinner_oral_feed_comments + ' ' 
+        + state.pain_discomfort_source + ' ' + state.pain_discomfort_comments + ' ' 
+        + state.aoc_followup_comments + ' ' + state.important_notes;
+
+        setState({
+            ...state,
+            combined_comments: combinedComment
+        })
+    }
+
     const saveButtonEvent = () => {
         const currDate: string = state.date.toDateString();
         const dateURI: string = backendURI + `date?date=${currDate}`;
@@ -349,7 +364,7 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>Comments</span>
                         <br></br>
-                        <CommentField commentFieldString={""} updateState={updateEdaravoneComments}/>
+                        <CommentField commentFieldString={state.edaravone_comments} updateState={updateEdaravoneComments}/>
                     </div>
                     <div className="box-2-edaravone">
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
@@ -361,13 +376,13 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">PREVIOUS NIGHT BIPAP?</span>
                         <BinaryField binarySelection={state.bipap_nighttime} name="bipap-night" updateState={updateBipapNighttime}/>
                         <br></br>
-                        <IntField title="Hours on Bipap Overnight" updateState={updateBipapNighttimeHours}/>
+                        <IntField inputNumber={state.bipap_nighttime_hours} title="Hours on Bipap Overnight" updateState={updateBipapNighttimeHours}/>
                     </div>
                     <div className="box-4-bipap">
                         <span className="box-title">DAYTIME USE OF BIPAP?</span>
                         <BinaryField binarySelection={state.bipap_daytime} name="bipap-day" updateState={updateBipapDaytime}/>
                         <br></br>
-                        <IntField title="Hours of Daytime Bipap" updateState={updateBipapDaytimeHours}/>
+                        <IntField inputNumber={state.bipap_daytime_hours} title="Hours of Daytime Bipap" updateState={updateBipapDaytimeHours}/>
                     </div>
                 </div>
                 <div className="sheet-row-container-reverse">
@@ -376,11 +391,11 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>Notes?</span>
                         <br></br>
-                        <CommentField commentFieldString={""} rows={5} updateState={updateSleep}/>
+                        <CommentField commentFieldString={state.sleep} rows={5} updateState={updateSleep}/>
                     </div>
                     <div className="box-6-bipap">
                         <span className="box-title">BIPAP COMMENTS</span>
-                        <CommentField commentFieldString={""} updateState={updateBipapComments}/>
+                        <CommentField commentFieldString={state.bipap_comments} updateState={updateBipapComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
@@ -391,12 +406,12 @@ const Sheet: FC<SheetProps> = () => {
                                 <BinaryField binarySelection={state.bowel_movement} label="BM?" name="bowel-movement" updateState={updateBW}/>
                                 <span>Comments</span>
                                 <br></br>
-                                <CommentField commentFieldString={""} updateState={updateBWComments}/>
+                                <CommentField commentFieldString={state.bowel_movement_comments} updateState={updateBWComments}/>
                             </div>
                             <div className="box-7-inner-right">
-                                <IntField title="Urine Output" updateState={updateUrineOutput}/>
+                                <IntField inputNumber={state.urine_output} title="Urine Output" updateState={updateUrineOutput}/>
                                 <BinaryField binarySelection={state.urine_morning} label="Morning?" name="urine-morning" updateState={updateUrineMorning}/>
-                                <DecimalField title="Daily Volume" updateState={updateUrineDailyVolume}/>
+                                <DecimalField inputNumber={state.urine_daily_volume} title="Daily Volume" updateState={updateUrineDailyVolume}/>
                             </div>
                         </div>
                     </div>
@@ -407,14 +422,14 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-8-inner-left">
                                 <span>Change in RX?</span>
                                 <br></br>
-                                <CommentField commentFieldString={""} rows={3} updateState={updateMedicationRXChange}/>
+                                <CommentField commentFieldString={state.medication_rx_change} rows={3} updateState={updateMedicationRXChange}/>
                             </div>
                             <div className="box-8-inner-middle">
                             </div>
                             <div className="box-8-inner-right">
                                 <span>Change in Routine?</span>
                                 <br></br>
-                                <CommentField commentFieldString={""} rows={3} updateState={updateMedicationRoutineChange}/> 
+                                <CommentField commentFieldString={state.medication_routine_change} rows={3} updateState={updateMedicationRoutineChange}/> 
                             </div>
                         </div>
                     </div>
@@ -432,13 +447,13 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-9-inner-right">
                                 <span>Other?</span>
                                 <br></br>
-                                <CommentField commentFieldString={""} updateState={updateGtubeComments}/>
+                                <CommentField commentFieldString={state.gtube_other_comments} updateState={updateGtubeComments}/>
                             </div>
                         </div>
                     </div>
                     <div className="box-10-dinner">
                         <span className="box-title">DINNER/ORAL FEEDING NOTES</span>
-                        <CommentField commentFieldString={""} updateState={updateDinnerOralFeedComments}/>
+                        <CommentField commentFieldString={state.dinner_oral_feed_comments} updateState={updateDinnerOralFeedComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
@@ -449,15 +464,15 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-11-bottom">
                                 <div className="box-11-bottom-left">
                                     <span>Source:</span>
-                                    <DropdownField options={dropdownOptions} updateState={updatePainDiscomfortSource}/>
+                                    <DropdownField selectedOption={state.pain_discomfort_source} options={dropdownOptions} updateState={updatePainDiscomfortSource}/>
                                     <br></br>
                                     <span>Other Source: </span>
-                                    <OptionField limit={50} updateState={updatePainDiscomfortSource}/>
+                                    <OptionField inputOption={state.pain_discomfort_source} limit={50} updateState={updatePainDiscomfortSource}/>
                                 </div>
                                 <div className="box-11-bottom-right">
                                     <span>Notes</span>
                                     <br></br>
-                                    <CommentField commentFieldString={""} rows={3} updateState={updatePainDiscomfortComments}/>
+                                    <CommentField commentFieldString={state.pain_discomfort_comments} rows={3} updateState={updatePainDiscomfortComments}/>
                                 </div>
                             </div>
                         </div>
@@ -476,7 +491,7 @@ const Sheet: FC<SheetProps> = () => {
                 <br></br>
                 <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                 <br></br>
-                <CommentField commentFieldString={""} limit={1000} rows={6} updateState={updateAOCFollowup}/>
+                <CommentField commentFieldString={state.aoc_followup_comments} limit={1000} rows={6} updateState={updateAOCFollowup}/>
                 <div className="save-button-wrapper">
                     <SaveButton saveState={saveButtonEvent}/>
                 </div>
