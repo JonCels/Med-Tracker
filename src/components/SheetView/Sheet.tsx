@@ -289,6 +289,8 @@ const Sheet: FC<SheetProps> = () => {
                 console.log(err);
             });
         alert(`Saved sheet for ${state.date}`);
+
+        setState(initState);
     };  
 
     function updateSheet(existingSheetId: number): void {
@@ -374,7 +376,7 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>Notes?</span>
                         <br></br>
-                        <CommentField limit={50} updateState={updateSleep}/>
+                        <CommentField rows={5} updateState={updateSleep}/>
                     </div>
                     <div className="box-6-bipap">
                         <span className="box-title">BIPAP COMMENTS</span>
