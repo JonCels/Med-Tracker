@@ -5,20 +5,13 @@ import "react-datepicker/dist/react-datepicker.css";
 interface DateProps {
     title: string;
     updateState: (arg: Date) => void;
+    selectedDate: Date;
 }
 
-const DateField: FC<DateProps> = ({ title, updateState }) => {
-    const [selectedDate, setDate] = useState(new Date());
-    
+const DateField: FC<DateProps> = ({ title, updateState, selectedDate }) => {
     const selectDateHandler = (date: Date) => {
-        setDate(date)
+        updateState(date)
     }
-
-    useEffect(() => {
-        if (updateState) {
-            updateState(selectedDate);
-        }
-    }, [selectedDate]);
 
     return (
     <div>
@@ -31,7 +24,6 @@ const DateField: FC<DateProps> = ({ title, updateState }) => {
             todayButton={"Today"}/>
     </div>
     )
-    
 };
 
 export default DateField;

@@ -1,37 +1,32 @@
 import { FC, useState, useEffect } from 'react';
 
 interface BinaryLabeledProps {
-    label: string;
+    label?: string;
     name: string;
     updateState: (arg: string) => void;
+    binarySelection: string;
 }
 
-const BinaryLabeledField: FC<BinaryLabeledProps> = ({ label, name, updateState }) => {
-    const [binarySelection, setBinarySelection] = useState<string>("");
-
+const BinaryLabeledField: FC<BinaryLabeledProps> = ({ label, name, updateState, binarySelection }) => {
+    const displayLabel = label === undefined ? "none" : "inline-block";
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setBinarySelection(event.target.value);
+        console.log(label);
+        updateState(event.target.value);
     };
-    
-    useEffect(() => {
-        if (updateState) {
-            updateState(binarySelection);
-        }
-    }, [binarySelection]);
 
     return (
     <div className="binary-labeled-field">
-        <span className="binary-label">{label}</span>
+        <span style={{ display: displayLabel }} className="binary-label">{label}</span>
         <input type="radio" 
             value="Y"
-            name={name} 
+            checked={binarySelection === "Y"}
             onChange={radioHandler}/>
             <label className="binary-options">Y</label>
 
         <input className="binary-radio-right"
             type="radio" 
             value="N" 
-            name={name} 
+            checked={binarySelection === "N"}
             onChange={radioHandler}/>
             <label className="binary-options">N</label>
     </div>

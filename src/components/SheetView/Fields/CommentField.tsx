@@ -1,27 +1,20 @@
-import { FC, useState, useEffect } from 'react';
+import { FC } from 'react';
 
 interface CommentProps {
     limit?: number;
     rows?: number;
     updateState: (arg: string) => void;
+    commentFieldString: string;
 }
 
-const CommentField: FC<CommentProps> = ({ limit = 500, rows = 2, updateState }) => {
-    const [commentString, setCommentString] = useState<string>("");
-
+const CommentField: FC<CommentProps> = ({ limit = 500, rows = 2, updateState, commentFieldString }) => {
     const inputCommentHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setCommentString(event.target.value);
+        updateState(event.target.value);
     }
-
-    useEffect(() => {
-        if (updateState) {
-            updateState(commentString);
-        }
-    }, [commentString]);
 
     return (
     <div>
-        <textarea maxLength={limit} rows={rows} onChange={inputCommentHandler}/>
+        <textarea value={commentFieldString} maxLength={limit} rows={rows} onChange={inputCommentHandler}/>
     </div>
     )
 };

@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import {CommentField, BinaryField, BinaryLabeledField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
+import {CommentField, BinaryLabeledField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
 import SaveButton from './SaveButton';
 
 interface SheetProps {}
@@ -19,7 +19,7 @@ const Sheet: FC<SheetProps> = () => {
     const initState = {
         firstname: "Mike",
         lastname: "Cels",
-        date: new Date().toDateString(),
+        date: new Date(),
         sortable_date: new Date().toISOString().slice(0, 10),
         edaravone: "",
         edaravone_comments: "",
@@ -54,7 +54,7 @@ const Sheet: FC<SheetProps> = () => {
     const updateDate = (date: Date): void => {
         setState({
             ...state,
-            date: date.toDateString(),
+            date: date,
             sortable_date: date.toISOString().slice(0, 10),
         });
     };
@@ -242,7 +242,7 @@ const Sheet: FC<SheetProps> = () => {
     };
 
     const saveButtonEvent = () => {
-        const currDate: string = state.date;
+        const currDate: string = state.date.toDateString();
         const dateURI: string = backendURI + `date?date=${currDate}`;
         let getDateURI: string = encodeURI(dateURI);
 
@@ -272,7 +272,7 @@ const Sheet: FC<SheetProps> = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(state)
+            body: JSON.stringify({ ...state, date: state.date.toDateString() })
         }
 
         fetch(backendURI, options)
@@ -282,13 +282,13 @@ const Sheet: FC<SheetProps> = () => {
                 }
                 return data.json();
             })
-            .then((update) => {
-                //console.log(update);
+            .then(() => {
+                setState(initState);
             })
             .catch(err => {
                 console.log(err);
             });
-        alert(`Saved sheet for ${state.date}`);
+        alert(`Saved sheet for ${state.date.toDateString()}`);
 
         setState(initState);
     };  
@@ -299,11 +299,11 @@ const Sheet: FC<SheetProps> = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(state)
+            body: JSON.stringify({ ...state, date: state.date.toDateString() })
         }
         let idStr: string = existingSheetId.toString();
-
         const fetchURI: string = backendURI + `${idStr}`;
+
         fetch(fetchURI, options)
             .then((data) => {
                 if (!data.ok) {
@@ -311,13 +311,13 @@ const Sheet: FC<SheetProps> = () => {
                 }
                 return data.json();
             })
-            .then((update) => {
-                //console.log(update);
+            .then(() => {
+                setState(initState);
             })
             .catch(err => {
                 console.log(err);
             });
-        alert(`Updated existing sheet for ${state.date}`);
+        alert(`Updated existing sheet for ${state.date.toDateString()}`);
     }
 
     return (
@@ -333,39 +333,39 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         Medical Tracking
                     </h3>
-                    <DateField title="DATE: " updateState={updateDate}/>
+                    <DateField selectedDate={state.date} title="DATE: " updateState={updateDate}/>
                 </div>
                 <div className="sheet-head-right-wrapper">
                     <span>IMPORTANT NOTES</span>
                     <br></br>
-                    <CommentField rows={5} updateState={updateImportantNotes}/>
+                    <CommentField commentFieldString={state.important_notes} rows={5} updateState={updateImportantNotes}/>
                 </div>
             </div>
             <div className="sheet-box-container">
                 <div className="sheet-row-container">
                     <div className="box-1-edaravone">
                         <span className="box-title">Edaravone?</span>
-                        <BinaryField name="edaravone" updateState={updateEdaravone}/>
+                        <BinaryLabeledField binarySelection={state.edaravone} name="edaravone" updateState={updateEdaravone}/>
                         <br></br>
                         <span>Comments</span>
                         <br></br>
-                        <CommentField updateState={updateEdaravoneComments}/>
+                        <CommentField commentFieldString={""} updateState={updateEdaravoneComments}/>
                     </div>
                     <div className="box-2-edaravone">
                         <span className="box-title">CHANGE IN Edaravone Routine?</span>
                         <br></br>
                         <br></br>
-                        <BinaryField name="edaravone-change" updateState={updateEdaravoneChange}/>
+                        <BinaryLabeledField binarySelection={state.edaravone_change} name="edaravone-change" updateState={updateEdaravoneChange}/>
                     </div>
                     <div className="box-3-bipap">
                         <span className="box-title">PREVIOUS NIGHT BIPAP?</span>
-                        <BinaryField name="bipap-night" updateState={updateBipapNighttime}/>
+                        <BinaryLabeledField binarySelection={state.bipap_nighttime} name="bipap-night" updateState={updateBipapNighttime}/>
                         <br></br>
                         <IntField title="Hours on Bipap Overnight" updateState={updateBipapNighttimeHours}/>
                     </div>
                     <div className="box-4-bipap">
                         <span className="box-title">DAYTIME USE OF BIPAP?</span>
-                        <BinaryField name="bipap-day" updateState={updateBipapDaytime}/>
+                        <BinaryLabeledField binarySelection={state.bipap_daytime} name="bipap-day" updateState={updateBipapDaytime}/>
                         <br></br>
                         <IntField title="Hours of Daytime Bipap" updateState={updateBipapDaytimeHours}/>
                     </div>
@@ -376,11 +376,11 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>Notes?</span>
                         <br></br>
-                        <CommentField rows={5} updateState={updateSleep}/>
+                        <CommentField commentFieldString={""} rows={5} updateState={updateSleep}/>
                     </div>
                     <div className="box-6-bipap">
                         <span className="box-title">BIPAP COMMENTS</span>
-                        <CommentField updateState={updateBipapComments}/>
+                        <CommentField commentFieldString={""} updateState={updateBipapComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
@@ -388,14 +388,14 @@ const Sheet: FC<SheetProps> = () => {
                         <span className="box-title">ELIMINATION NOTES</span>
                         <div className="box-7-inner-wrapper">
                             <div className="box-7-inner-left">
-                                <BinaryLabeledField label="BM?" name="bowel-movement" updateState={updateBW}/>
+                                <BinaryLabeledField binarySelection={state.bowel_movement} label="BM?" name="bowel-movement" updateState={updateBW}/>
                                 <span>Comments</span>
                                 <br></br>
-                                <CommentField updateState={updateBWComments}/>
+                                <CommentField commentFieldString={""} updateState={updateBWComments}/>
                             </div>
                             <div className="box-7-inner-right">
                                 <IntField title="Urine Output" updateState={updateUrineOutput}/>
-                                <BinaryLabeledField label="Morning?" name="urine-morning" updateState={updateUrineMorning}/>
+                                <BinaryLabeledField binarySelection={state.urine_morning} label="Morning?" name="urine-morning" updateState={updateUrineMorning}/>
                                 <DecimalField title="Daily Volume" updateState={updateUrineDailyVolume}/>
                             </div>
                         </div>
@@ -407,14 +407,14 @@ const Sheet: FC<SheetProps> = () => {
                             <div className="box-8-inner-left">
                                 <span>Change in RX?</span>
                                 <br></br>
-                                <CommentField rows={3} updateState={updateMedicationRXChange}/>
+                                <CommentField commentFieldString={""} rows={3} updateState={updateMedicationRXChange}/>
                             </div>
                             <div className="box-8-inner-middle">
                             </div>
                             <div className="box-8-inner-right">
                                 <span>Change in Routine?</span>
                                 <br></br>
-                                <CommentField rows={3} updateState={updateMedicationRoutineChange}/> 
+                                <CommentField commentFieldString={""} rows={3} updateState={updateMedicationRoutineChange}/> 
                             </div>
                         </div>
                     </div>
@@ -427,25 +427,25 @@ const Sheet: FC<SheetProps> = () => {
                                 <br></br>
                                 <span>Morning Shake Via Pump?</span>
                                 <br></br>
-                                <BinaryField name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
+                                <BinaryLabeledField binarySelection={state.morning_shake_via_pump} name="morning-shake-via-pump" updateState={updateMorningShakeViaPump}/>
                             </div>
                             <div className="box-9-inner-right">
                                 <span>Other?</span>
                                 <br></br>
-                                <CommentField updateState={updateGtubeComments}/>
+                                <CommentField commentFieldString={""} updateState={updateGtubeComments}/>
                             </div>
                         </div>
                     </div>
                     <div className="box-10-dinner">
                         <span className="box-title">DINNER/ORAL FEEDING NOTES</span>
-                        <CommentField updateState={updateDinnerOralFeedComments}/>
+                        <CommentField commentFieldString={""} updateState={updateDinnerOralFeedComments}/>
                     </div>
                 </div>
                 <div className="sheet-row-container">
                     <div className="box-11-pain-discomfort">
                         <span className="box-title">PAIN or DISCOMFORT?</span>
                         <div className="box-11-inner-wrapper">
-                            <BinaryField name="pain-discomfort" updateState={updatePainDiscomfort}/>
+                            <BinaryLabeledField binarySelection={state.pain_discomfort} name="pain-discomfort" updateState={updatePainDiscomfort}/>
                             <div className="box-11-bottom">
                                 <div className="box-11-bottom-left">
                                     <span>Source:</span>
@@ -457,7 +457,7 @@ const Sheet: FC<SheetProps> = () => {
                                 <div className="box-11-bottom-right">
                                     <span>Notes</span>
                                     <br></br>
-                                    <CommentField rows={3} updateState={updatePainDiscomfortComments}/>
+                                    <CommentField commentFieldString={""} rows={3} updateState={updatePainDiscomfortComments}/>
                                 </div>
                             </div>
                         </div>
@@ -468,7 +468,7 @@ const Sheet: FC<SheetProps> = () => {
                         <br></br>
                         <span>SUCTION MACHINE?</span>
                         <br></br>
-                        <BinaryField name="suction-machine" updateState={updateSuctionMachine}/>
+                        <BinaryLabeledField binarySelection={state.suction_machine} name="suction-machine" updateState={updateSuctionMachine}/>
                     </div>
                 </div>
             </div>
@@ -476,7 +476,7 @@ const Sheet: FC<SheetProps> = () => {
                 <br></br>
                 <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                 <br></br>
-                <CommentField limit={1000} rows={6} updateState={updateAOCFollowup}/>
+                <CommentField commentFieldString={""} limit={1000} rows={6} updateState={updateAOCFollowup}/>
                 <div className="save-button-wrapper">
                     <SaveButton saveState={saveButtonEvent}/>
                 </div>
