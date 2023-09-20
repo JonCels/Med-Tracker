@@ -242,20 +242,6 @@ const Sheet: FC<SheetProps> = () => {
         });
     };
 
-    const updateCombinedComments = (): void => {
-        const combinedComment = state.edaravone_comments + ' ' + state.bipap_comments + ' ' 
-        + state.sleep + ' ' + state.bowel_movement_comments + ' ' + state.urine_comments + ' ' 
-        + state.medication_rx_change + ' ' + state.medication_routine_change + ' ' 
-        + state.gtube_other_comments + ' ' + state.dinner_oral_feed_comments + ' ' 
-        + state.pain_discomfort_source + ' ' + state.pain_discomfort_comments + ' ' 
-        + state.aoc_followup_comments + ' ' + state.important_notes;
-
-        setState({
-            ...state,
-            combined_comments: combinedComment
-        })
-    }
-
     const saveButtonEvent = () => {
         const currDate: string = state.date.toDateString();
         const dateURI: string = backendURI + `date?date=${currDate}`;

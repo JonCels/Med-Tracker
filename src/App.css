@@ -308,6 +308,7 @@ input[type="number"] {
   background-color: white;
   min-width: 94px;
   margin-left: 4px;
+  cursor:'pointer';
 }
 
 .save-button:hover {
