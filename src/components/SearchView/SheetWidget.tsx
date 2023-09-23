@@ -78,6 +78,7 @@ const SheetWidget: FC<SheetWidgetProps> = ({ sheetData }) => {
             <td>{date}</td>
             <td>{important_notes}</td>
             <td>{aoc_followup_comments}</td>
+            <td><img src="edit_icon.svg"></img></td>
         </tr>
     )
 };

@@ -318,3 +318,101 @@ input[type="number"] {
 .save-button:active {
   box-shadow: 0 2px 5px 0 rgba(82, 82, 82, 0.5);
 }
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+  background: white;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid #ACACAC;
+  margin: 0 0 10px;
+  padding: 0;
+  margin-bottom: 0px;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+  background: floralwhite;
+  border-color: #ACACAC;
+  color: black;
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}
+
+.react-tabs__tab:focus {
+  outline: none;
+}
+
+.react-tabs__tab:focus:after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: floralwhite;
+}
+
+.react-tabs__tab-panel {
+  display: none;
+}
+
+.react-tabs__tab-panel--selected {
+  display: block;
+}
+
+table {
+  border-collapse: separate; 
+  border: none;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+  
+  min-width: 500px;
+}
+
+th {
+  background-color: floralwhite;  
+}
+
+tr {
+  background-color: floralwhite;
+}
+
+tr:hover {
+  background-color:#f5f5f5;
+}
+
+th, td {
+  padding: 0.4em 0.5em 0.4em 1em;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid #ACACAC;
+  border-spacing: 0;
+}
+
+/* Fixed Headers */
+thead th, thead td {
+  background-color: floralwhite;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  font-weight: 500;
+  height:2rem;
+}

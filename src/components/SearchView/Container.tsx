@@ -38,6 +38,8 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
     //     important_notes: string,
     // };
 
+    const backendURI: string = 'https://daily-med-tracker.onrender.com/api/sheets/';
+
     const [widgetList, setWidgetList] = useState<any[]>([]);
 
     useEffect(() => {
@@ -45,7 +47,7 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
     }, []);
 
     const loadExistingSheets = () => {
-        let allWidgetsUrl: string = encodeURI("http://localhost:8081/api/sheets/");
+        let allWidgetsUrl: string = encodeURI(backendURI);
         fetch(allWidgetsUrl)
             .then((data) => {
                 if (!data.ok) {
@@ -69,6 +71,7 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
                     <th>Date</th>
                     <th>Important Notes</th>
                     <th>Areas of Concern or Followup</th>
+                    <th>Actions</th>
                 </tr>
                 {widgetList.map((widget) => {
                     return (
