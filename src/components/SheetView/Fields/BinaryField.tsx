@@ -10,7 +10,6 @@ interface BinaryProps {
 const BinaryField: FC<BinaryProps> = ({ label, name, updateState, binarySelection }) => {
     const displayLabel = label === undefined ? "none" : "inline-block";
     const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(label);
         updateState(event.target.value);
     };
 

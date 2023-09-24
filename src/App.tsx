@@ -5,23 +5,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Sheet from './components/SheetView/Sheet';
 import ViewBar from './components/ViewBar';
 import Container from './components/SearchView/Container';
+import Tracker from './components/Tracker';
+
 
 function App() {
   return (
     <div className="App">
-      <Tabs>
-        <TabList>
-          <Tab>Sheet Page</Tab>
-          <Tab>Search Page</Tab>
-        </TabList>
-
-        <TabPanel>
-          <Sheet/>
-        </TabPanel>
-        <TabPanel>
-          <Container/>
-        </TabPanel>
-      </Tabs>
+      <Tracker/>
     </div>
   );
 }

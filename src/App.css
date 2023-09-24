@@ -381,8 +381,7 @@ table {
   border: none;
   border-spacing: 0;
   table-layout: fixed;
-  width: 100%;
-  
+  /* width: 100%; */
   min-width: 500px;
 }
 
@@ -415,4 +414,12 @@ thead th, thead td {
   z-index: 2;
   font-weight: 500;
   height:2rem;
+}
+
+.actionColumn {
+  text-align: center;
+}
+
+.actionButton:hover {
+  cursor: pointer;
 }

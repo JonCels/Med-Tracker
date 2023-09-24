@@ -32,53 +32,24 @@ interface SheetWidgetProps {
         suction_machine: string,
         aoc_followup_comments: string,
         important_notes: string,
+        combined_comments: string
     };
+    passSheetData: (arg: {}) => void;
 }
 
-const SheetWidget: FC<SheetWidgetProps> = ({ sheetData }) => {
-    const initState = {
-        firstname: "Mike",
-        lastname: "Cels",
-        date: new Date().toDateString(),
-        sortable_date: new Date().toISOString().slice(0, 10),
-        edaravone: "",
-        edaravone_comments: "",
-        edaravone_change: "",
-        bipap_nighttime: "",
-        bipap_nighttime_hours: 0,
-        bipap_daytime: "",
-        bipap_daytime_hours: 0,
-        bipap_comments: "",
-        sleep: "",
-        bowel_movement: "",
-        bowel_movement_comments: "",
-        urine_output: 0,
-        urine_morning: "",
-        urine_daily_volume: 0,
-        urine_comments: "",
-        medication_rx_change: "",
-        medication_routine_change: "",
-        morning_shake_via_pump: "",
-        gtube_other_comments: "",
-        dinner_oral_feed_comments: "",
-        pain_discomfort: "",
-        pain_discomfort_source: "",
-        pain_discomfort_comments: "",
-        suction_machine: "",
-        aoc_followup_comments: "",
-        important_notes: "",
+const SheetWidget: FC<SheetWidgetProps> = ({ sheetData, passSheetData }) => {
+    const clickHandler = () => {
+        passSheetData({...sheetData, date: new Date(sheetData.date)});
     };
-
-    const date = sheetData == null ? initState.date : sheetData.date;
-    const important_notes = sheetData == null ? initState.important_notes : sheetData.important_notes;
-    const aoc_followup_comments = sheetData == null ? initState.aoc_followup_comments : sheetData.aoc_followup_comments;
 
     return (
         <tr className="sheet-widget">
-            <td>{date}</td>
-            <td>{important_notes}</td>
-            <td>{aoc_followup_comments}</td>
-            <td><img src="edit_icon.svg"></img></td>
+            <td width="15%">{sheetData.date}</td>
+            <td width="35%">{sheetData.important_notes}</td>
+            <td width="45%">{sheetData.aoc_followup_comments}</td>
+            <td width="5%" className="actionColumn">
+                <img src="edit_icon.svg" className="actionButton" onClick={clickHandler}></img>
+            </td>
         </tr>
     )
 };

@@ -2,9 +2,10 @@ import { FC, useState, useEffect } from 'react';
 import SheetWidget from './SheetWidget';
 
 interface ContainerProps {
+    passRowData: (arg: {}) => void;
 }
 
-const SearchContainer: FC<ContainerProps> = ({ }) => {
+const SearchContainer: FC<ContainerProps> = ({ passRowData }) => {
     // const initType: {
     //     firstname: string,
     //     lastname: string,
@@ -63,6 +64,10 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
             });
     };
 
+    const callbackHandler = (arg: {}) => {
+        passRowData(arg);
+    }
+
     return (
     <div className="search-container">
         <table>
@@ -75,7 +80,7 @@ const SearchContainer: FC<ContainerProps> = ({ }) => {
                 </tr>
                 {widgetList.map((widget) => {
                     return (
-                        <SheetWidget key={widget.id} sheetData={widget}/>
+                        <SheetWidget key={widget.id} sheetData={widget} passSheetData={callbackHandler}/>
                     );
                 })}
             </tbody>

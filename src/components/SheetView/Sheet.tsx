@@ -2,9 +2,43 @@ import { FC, useState } from 'react';
 import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
 import SaveButton from './SaveButton';
 
-interface SheetProps {}
+interface SheetProps {
+    initialData : {
+        firstname: string,
+        lastname: string,
+        date: Date,
+        sortable_date: string,
+        edaravone: string,
+        edaravone_comments: string,
+        edaravone_change: string,
+        bipap_nighttime: string,
+        bipap_nighttime_hours: number,
+        bipap_daytime: string,
+        bipap_daytime_hours: number,
+        bipap_comments: string,
+        sleep: string,
+        bowel_movement: string,
+        bowel_movement_comments: string,
+        urine_output: number,
+        urine_morning: string,
+        urine_daily_volume: number,
+        urine_comments: string,
+        medication_rx_change: string,
+        medication_routine_change: string,
+        morning_shake_via_pump: string,
+        gtube_other_comments: string,
+        dinner_oral_feed_comments: string,
+        pain_discomfort: string,
+        pain_discomfort_source: string,
+        pain_discomfort_comments: string,
+        suction_machine: string,
+        aoc_followup_comments: string,
+        important_notes: string,
+        combined_comments: string
+    };
+}
 
-const Sheet: FC<SheetProps> = () => {
+const Sheet: FC<SheetProps> = ({ initialData }) => {
     const backendURI: string = 'https://daily-med-tracker.onrender.com/api/sheets/';
 
     const dropdownOptions = [
@@ -50,7 +84,9 @@ const Sheet: FC<SheetProps> = () => {
         combined_comments: "",
     };
 
-    const [state, setState] = useState(initState);
+    // const loadData = initialData === undefined ? initState : initialData;
+    // console.log(loadData);
+    const [state, setState] = useState(initialData);
 
     const updateDate = (date: Date): void => {
         setState({
