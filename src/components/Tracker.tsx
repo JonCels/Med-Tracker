@@ -47,23 +47,26 @@ const Tracker: FC<TrackerProps> = () => {
 
     const loadPastData = (stateData: any) => {
         setState({...stateData});
+        setTabIndex(0);
     };
+
+    const [tabIndex, setTabIndex] = useState(0);
 
     return (
     <div className="binary-labeled-field">
-        <Tabs>
+    <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <TabList>
-          <Tab>Sheet Page</Tab>
-          <Tab>Search Page</Tab>
+            <Tab>Sheet Page</Tab>
+            <Tab>Search Page</Tab>
         </TabList>
 
         <TabPanel>
-          <Sheet initialData={state}/>
+            <Sheet initialData={state}/>
         </TabPanel>
         <TabPanel>
-          <Container passRowData={loadPastData}/>
+            <Container passRowData={loadPastData}/>
         </TabPanel>
-      </Tabs>
+    </Tabs>
     </div>
     )
 };
