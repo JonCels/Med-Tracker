@@ -295,6 +295,12 @@ input[type="number"] {
   color: darkred;
 }
 
+.button-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+}
+
 .save-button-wrapper {
   text-align: right;
 }
@@ -316,6 +322,29 @@ input[type="number"] {
 }
 
 .save-button:active {
+  box-shadow: 0 2px 5px 0 rgba(82, 82, 82, 0.5);
+}
+
+.clear-button-wrapper {
+  text-align: right;
+}
+
+.clear-button {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ACACAC;
+  font-weight: bold;
+  box-shadow: 0 2px 5px 0 rgba(215,215,215,0.5);
+  background-color: lavenderblush;
+  min-width: 94px; 
+  cursor:'pointer';
+}
+
+.clear-button:hover {
+  background-color: whitesmoke;
+}
+
+.clear-button:active {
   box-shadow: 0 2px 5px 0 rgba(82, 82, 82, 0.5);
 }
 

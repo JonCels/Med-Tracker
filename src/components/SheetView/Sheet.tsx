@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import {CommentField, BinaryField, DateField, DropdownField, IntField, DecimalField, OptionField} from '../ImportHelper';
 import SaveButton from './SaveButton';
+import ClearButton from './ClearButton';
 
 interface SheetProps {
     initialData : {
@@ -303,6 +304,13 @@ const Sheet: FC<SheetProps> = ({ initialData }) => {
             });
     };
 
+    const clearButtonEvent = () => {
+        let resp = window.confirm("Are you sure you'd like to clear the sheet?");
+        if (resp) {
+            setState(initState);
+        }
+    };
+
     function saveSheet(): void {
         const options = {
             method: 'POST',
@@ -360,8 +368,13 @@ const Sheet: FC<SheetProps> = ({ initialData }) => {
     return (
     <div className="sheet">
         <div className="sheet-container">
-            <div className="save-button-wrapper">
-                <SaveButton saveState={saveButtonEvent}/>
+            <div className="button-bar">
+                <div className="clear-button-wrapper">
+                    <ClearButton clearState={clearButtonEvent}/>
+                </div>
+                <div className="save-button-wrapper">
+                    <SaveButton saveState={saveButtonEvent}/>
+                </div>
             </div>
             <div className="sheet-head-wrapper">
                 <div className="sheet-head-left-wrapper">
@@ -514,8 +527,13 @@ const Sheet: FC<SheetProps> = ({ initialData }) => {
                 <span>NOTES, COMMENTS, AREAS OF CONCERN OR FOLLOWUP</span>
                 <br></br>
                 <CommentField commentFieldString={state.aoc_followup_comments} limit={1000} rows={6} updateState={updateAOCFollowup}/>
-                <div className="save-button-wrapper">
-                    <SaveButton saveState={saveButtonEvent}/>
+                <div className="button-bar">
+                    <div className="clear-button-wrapper">
+                        <ClearButton clearState={clearButtonEvent}/>
+                    </div>
+                    <div className="save-button-wrapper">
+                        <SaveButton saveState={saveButtonEvent}/>
+                    </div>
                 </div>
             </div>
         </div>
